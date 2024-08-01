@@ -33,26 +33,27 @@ export async function updateSession(request: NextRequest) {
     data: { user },
   } = await supabase.auth.getUser();
 
-  if (
-    !user &&
-    !request.nextUrl.pathname.startsWith("/login") &&
-    !request.nextUrl.pathname.startsWith("/signup")
-  ) {
-    //no user, potentially respond by redirecting the user to the login page
-    const url = request.nextUrl.clone();
-    url.pathname = "/login";
-    return NextResponse.redirect(url);
+  if (!user) {
+    if (
+      !request.nextUrl.pathname.startsWith("/login") &&
+      !request.nextUrl.pathname.startsWith("/signup")
+    ) {
+      // no user, and trying to access a protected page, redirect to login
+      const url = request.nextUrl.clone();
+      url.pathname = "/login";
+      return NextResponse.redirect(url);
+    }
   }
-
-  if (
-    (user && request.nextUrl.pathname.startsWith("/login")) ||
-    request.nextUrl.pathname.startsWith("/signup")
-  ) {
-    //there is user, so making it unable to redirect to public pages
-    const url = request.nextUrl.clone();
-    url.pathname = "/private";
-    return NextResponse.redirect(url);
+  if (user) {
+    if (
+      request.nextUrl.pathname.startsWith("/login") ||
+      request.nextUrl.pathname.startsWith("/signup")
+    ) {
+      // user is logged in but trying to access login or signup page, redirect to a protected page
+      const url = request.nextUrl.clone();
+      url.pathname = "/private";
+      return NextResponse.redirect(url);
+    }
   }
-
   return supabaseResponse;
 }
