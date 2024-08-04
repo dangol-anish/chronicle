@@ -1,6 +1,8 @@
 import { login } from "./actions";
 import { redirect } from "next/navigation";
 import { createClient } from "@/utils/supabase/server";
+import Image from "next/image";
+import AuthCover from "../../public/AuthCover.svg";
 
 export default async function LoginPage() {
   const supabase = await createClient();
@@ -13,12 +15,25 @@ export default async function LoginPage() {
     return redirect("/private");
   }
   return (
-    <form>
-      <label htmlFor="email">Email:</label>
-      <input id="email" name="email" type="email" required />
-      <label htmlFor="password">Password:</label>
-      <input id="password" name="password" type="password" required />
-      <button formAction={login}>Log in</button>
-    </form>
+    <>
+      <div className="flex h-[100vh] ">
+        {/* <section className="w-[50%] bg-stone-900 flex justify-center">
+          <Image
+            className="object-fit"
+            src={AuthCover}
+            alt="Picture of the author"
+          />
+        </section> */}
+        <section className="w-[50%]">
+          <form>
+            <label htmlFor="email">Email:</label>
+            <input id="email" name="email" type="email" required />
+            <label htmlFor="password">Password:</label>
+            <input id="password" name="password" type="password" required />
+            <button formAction={login}>Log in</button>
+          </form>
+        </section>
+      </div>
+    </>
   );
 }
