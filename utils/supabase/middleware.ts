@@ -2,6 +2,13 @@ import { createServerClient } from "@supabase/ssr";
 import { NextResponse, type NextRequest } from "next/server";
 
 export async function updateSession(request: NextRequest) {
+  const url = request.nextUrl.clone();
+
+  // Allow OAuth callback to be processed
+  if (url.pathname.startsWith("/auth/callback")) {
+    return NextResponse.next();
+  }
+
   let supabaseResponse = NextResponse.next({
     request,
   });
@@ -35,25 +42,23 @@ export async function updateSession(request: NextRequest) {
 
   if (!user) {
     if (
-      !request.nextUrl.pathname.startsWith("/login") &&
-      !request.nextUrl.pathname.startsWith("/signup")
+      !url.pathname.startsWith("/login") &&
+      !url.pathname.startsWith("/signup")
     ) {
       // no user, and trying to access a protected page, redirect to login
-      const url = request.nextUrl.clone();
       url.pathname = "/login";
       return NextResponse.redirect(url);
     }
-  }
-  if (user) {
+  } else {
     if (
-      request.nextUrl.pathname.startsWith("/login") ||
-      request.nextUrl.pathname.startsWith("/signup")
+      url.pathname.startsWith("/login") ||
+      url.pathname.startsWith("/signup")
     ) {
       // user is logged in but trying to access login or signup page, redirect to a protected page
-      const url = request.nextUrl.clone();
       url.pathname = "/private";
       return NextResponse.redirect(url);
     }
   }
+
   return supabaseResponse;
 }

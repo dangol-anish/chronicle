@@ -3,6 +3,7 @@ import { redirect } from "next/navigation";
 import { createClient } from "@/utils/supabase/server";
 import Image from "next/image";
 import AuthCover from "../../public/AuthCover.svg";
+import { OAuthButtons } from "@/components/ui/oauth-signin";
 
 export default async function LoginPage() {
   const supabase = await createClient();
@@ -32,6 +33,7 @@ export default async function LoginPage() {
             <input id="password" name="password" type="password" required />
             <button formAction={login}>Log in</button>
           </form>
+          <OAuthButtons />
         </section>
       </div>
     </>
