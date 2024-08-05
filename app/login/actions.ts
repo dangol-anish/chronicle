@@ -15,13 +15,20 @@ export async function login(formData: FormData) {
     password: formData.get("password") as string,
   };
 
-  const { error } = await supabase.auth.signInWithPassword(data);
+  try {
+    const { error } = await supabase.auth.signInWithPassword(data);
 
-  if (error) {
-    redirect("/error");
-    console.log(error);
+    if (error) {
+      return {
+        error: error.message,
+      };
+    }
+
+    revalidatePath("/", "layout");
+    redirect("/private");
+  } catch (error) {
+    return {
+      error: "Something went wrong",
+    };
   }
-
-  revalidatePath("/", "layout");
-  redirect("/private");
 }
