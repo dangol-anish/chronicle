@@ -65,7 +65,10 @@ export default async function LoginPage() {
                     required
                   />
                 </div>
-                <Button className="w-full bg-stone-900" formAction={login}>
+                <Button
+                  className="w-full bg-stone-900 hover:bg-stone-700"
+                  formAction={login}
+                >
                   Log in
                 </Button>
               </div>
