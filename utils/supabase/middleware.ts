@@ -43,7 +43,8 @@ export async function updateSession(request: NextRequest) {
   if (!user) {
     if (
       !url.pathname.startsWith("/login") &&
-      !url.pathname.startsWith("/signup")
+      !url.pathname.startsWith("/signup") &&
+      !url.pathname.startsWith("/")
     ) {
       // no user, and trying to access a protected page, redirect to login
       url.pathname = "/login";
