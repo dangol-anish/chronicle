@@ -23,12 +23,12 @@ export function OAuthButtons() {
     <>
       {OAuthProvider.map((provider) => (
         <Button
-          className="flex items-center justify-center gap-2"
+          className="w-[50%] flex items-center justify-center gap-2 "
           variant="outline"
           onClick={async () => await oAuthSignIn(provider.name)}
         >
           {provider.icon}
-          Login with {provider.displayName}
+          {provider.displayName}
         </Button>
       ))}
     </>
