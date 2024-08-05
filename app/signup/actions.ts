@@ -17,14 +17,22 @@ export async function signup(formData: FormData) {
     email: formData.get("email") as string,
     password: formData.get("password") as string,
   };
-  const { error } = await supabase.auth.signUp(data);
 
-  if (error) {
-    redirect(`/signup?message=${encodeURIComponent(error.message)}`);
+  try {
+    const { error } = await supabase.auth.signUp(data);
+
+    if (error) {
+      return {
+        error: error.message,
+      };
+    }
+    await supabase.auth.signOut();
+
+    revalidatePath("/", "layout");
+    redirect("/login");
+  } catch (error) {
+    return {
+      error: "Something went wrong",
+    };
   }
-
-  await supabase.auth.signOut();
-
-  revalidatePath("/", "layout");
-  redirect("/login");
 }
