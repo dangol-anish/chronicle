@@ -9,13 +9,39 @@ import { z } from "zod";
 export function SignupForm() {
   const { toast } = useToast();
 
+  const passwordSchema = z
+    .string()
+    .min(8, "Password must be at least 8 characters long")
+    .refine(
+      (value) => /[0-9]/.test(value),
+      "Password must contain at least one number"
+    )
+    .refine(
+      (value) => /[@$!%*?&#]/.test(value),
+      "Password must contain at least one special character: @$!%*?&#"
+    );
+
   const SignupSchema = z.object({
     username: z
       .string()
       .min(3, "Username must be at least 3 characters long")
       .max(15, "Username cannot exceed 15 characters"),
     email: z.string().email("Invalid email address"),
-    password: z.string().min(6, "Password must be at least 6 characters long"),
+    password: z.string().superRefine((value, ctx) => {
+      const errors = [];
+      if (value.length < 8)
+        errors.push("Password must be at least 8 characters long");
+      if (!/[0-9]/.test(value))
+        errors.push("Password must have at least one number");
+      if (!/[@$!%*?&#]/.test(value))
+        errors.push("Password must have at least one special character");
+      if (errors.length > 0) {
+        ctx.addIssue({
+          code: z.ZodIssueCode.custom,
+          message: errors.join("\n"),
+        });
+      }
+    }),
   });
 
   async function clientAction(formData: FormData) {

@@ -26,6 +26,7 @@ export function OAuthButtons() {
           className="w-[50%] flex items-center justify-center gap-2 "
           variant="outline"
           onClick={async () => await oAuthSignIn(provider.name)}
+          key={provider.name}
         >
           {provider.icon}
           {provider.displayName}
