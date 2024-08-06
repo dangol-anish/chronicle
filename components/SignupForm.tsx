@@ -1,4 +1,5 @@
 "use client";
+import { useState } from "react";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -8,6 +9,7 @@ import { z } from "zod";
 
 export function SignupForm() {
   const { toast } = useToast();
+  const [pending, setPending] = useState(false);
 
   const passwordSchema = z
     .string()
@@ -27,21 +29,7 @@ export function SignupForm() {
       .min(3, "Username must be at least 3 characters long")
       .max(15, "Username cannot exceed 15 characters"),
     email: z.string().email("Invalid email address"),
-    password: z.string().superRefine((value, ctx) => {
-      const errors = [];
-      if (value.length < 8)
-        errors.push("Password must be at least 8 characters long");
-      if (!/[0-9]/.test(value))
-        errors.push("Password must have at least one number");
-      if (!/[@$!%*?&#]/.test(value))
-        errors.push("Password must have at least one special character");
-      if (errors.length > 0) {
-        ctx.addIssue({
-          code: z.ZodIssueCode.custom,
-          message: errors.join("\n"),
-        });
-      }
-    }),
+    password: passwordSchema,
   });
 
   async function clientAction(formData: FormData) {
@@ -66,7 +54,10 @@ export function SignupForm() {
       return;
     }
 
+    setPending(true);
     const result = await signup(formData);
+    setPending(false);
+
     if (result?.error) {
       toast({
         variant: "destructive",
@@ -78,7 +69,11 @@ export function SignupForm() {
   return (
     <>
       <form
-        action={clientAction}
+        onSubmit={async (e) => {
+          e.preventDefault();
+          const formData = new FormData(e.currentTarget);
+          await clientAction(formData);
+        }}
         className="w-full md:w-[60%] lg:w-[50%] flex flex-col gap-5"
       >
         <div className="flex flex-col gap-2">
@@ -110,8 +105,12 @@ export function SignupForm() {
             <Label htmlFor="password">Password: </Label>
             <Input id="password" name="password" type="password" required />
           </div>
-          <Button className="w-full bg-stone-900 hover:bg-stone-700">
-            Sign up
+          <Button
+            type="submit"
+            disabled={pending}
+            className="w-full bg-stone-900 hover:bg-stone-700 disabled:bg-stone-500"
+          >
+            {pending ? "Signing up..." : "Sign up"}
           </Button>
         </div>
       </form>
