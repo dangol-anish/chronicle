@@ -6,7 +6,7 @@ import Link from "next/link";
 import { OAuthButtons } from "@/components/ui/oauth-signin";
 import { SignupForm } from "@/components/SignupForm";
 
-export default function LoginPage() {
+export default function SignupPage() {
   return (
     <>
       <div className="flex h-[100vh]">
@@ -17,7 +17,11 @@ export default function LoginPage() {
           </header>
         </section>
         <section className="w-full lg:w-[50%] p-10 h-full">
-          <header className=" flex justify-end">
+          <header className=" flex justify-between lg:justify-end">
+            <div className="flex justify-center items-center lg:hidden">
+              <Kanban size={25} />
+              <p>Chronicle</p>
+            </div>
             <Link href="/login">Login</Link>
           </header>
           <div className="flex flex-col gap-5 justify-center items-center h-[90%]">

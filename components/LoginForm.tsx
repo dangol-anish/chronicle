@@ -23,7 +23,10 @@ export function LoginForm() {
 
   return (
     <>
-      <form action={clientAction} className="w-[50%] flex flex-col gap-5">
+      <form
+        action={clientAction}
+        className="w-full md:w-[60%] lg:w-[50%] flex flex-col gap-5"
+      >
         <div className="flex flex-col gap-2">
           {" "}
           <h2 className="text-2xl font-semibold text-center">Welcome back</h2>
