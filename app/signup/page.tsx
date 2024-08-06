@@ -11,19 +11,19 @@ export default function SignupPage() {
     <>
       <div className="flex h-[100vh]">
         <section className="w-[50%] bg-stone-900 hidden lg:flex p-10">
-          <header className="text-white flex justify-center">
+          <Link href="/" className="text-white flex justify-center">
             <Kanban size={30} />
             <p className="text-xl">Chronicle</p>
-          </header>
+          </Link>
         </section>
         <section className="w-full lg:w-[50%] p-10 h-full">
-          <header className=" flex justify-between lg:justify-end">
+          <Link href="/" className=" flex justify-between lg:justify-end">
             <div className="flex justify-center items-center lg:hidden">
               <Kanban size={25} />
               <p>Chronicle</p>
             </div>
             <Link href="/login">Login</Link>
-          </header>
+          </Link>
           <div className="flex flex-col gap-5 justify-center items-center h-[90%]">
             <SignupForm />
             <div className="w-full md:w-[60%] lg:w-[50%]  flex justify-between items-center">
