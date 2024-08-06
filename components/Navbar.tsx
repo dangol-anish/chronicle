@@ -12,12 +12,14 @@ export default function Navbar() {
   }
   return (
     <>
-      <div className="p-5 border-b-[1px]">
-        <Link href="/" className="flex justify-start">
-          <Kanban size={30} />
-          <p className="text-xl">Chronicle</p>
-        </Link>
-      </div>
+      <nav className="px-10 py-4 border-b-[1px] flex items-center justify-between">
+        <div className="flex gap-10 items-center justify-center">
+          <Link href="/" className="flex justify-start">
+            <Kanban size={30} />
+            <p className="text-xl font-bold">Chronicle</p>
+          </Link>
+        </div>
+      </nav>
     </>
   );
 }

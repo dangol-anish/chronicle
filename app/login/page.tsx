@@ -19,13 +19,18 @@ export default async function LoginPage() {
           </Link>
         </section>
         <section className="w-full lg:w-[50%] p-10 h-full">
-          <Link href="/" className="flex justify-between lg:justify-end">
-            <div className="flex justify-center items-center lg:hidden">
+          <div className="flex justify-between lg:justify-end">
+            <Link
+              href="/"
+              className="flex justify-center items-center lg:hidden"
+            >
               <Kanban size={25} />
               <p>Chronicle</p>
-            </div>
-            <Link href="/signup">Sign up</Link>
-          </Link>
+            </Link>
+            <Link href="/signup" className="text-stone-900">
+              Sign up
+            </Link>
+          </div>
           <div className="flex flex-col gap-5 justify-center items-center h-[90%]">
             {" "}
             <LoginForm />

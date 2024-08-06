@@ -17,20 +17,24 @@ export default function SignupPage() {
           </Link>
         </section>
         <section className="w-full lg:w-[50%] p-10 h-full">
-          <Link href="/" className=" flex justify-between lg:justify-end">
-            <div className="flex justify-center items-center lg:hidden">
+          <div className="flex justify-between lg:justify-end">
+            <Link
+              href="/"
+              className="flex justify-center items-center lg:hidden"
+            >
               <Kanban size={25} />
               <p>Chronicle</p>
-            </div>
-            <Link href="/login">Login</Link>
-          </Link>
+            </Link>
+            <Link href="/login" className="text-stone-900">
+              Login
+            </Link>
+          </div>
           <div className="flex flex-col gap-5 justify-center items-center h-[90%]">
             <SignupForm />
-            <div className="w-full md:w-[60%] lg:w-[50%]  flex justify-between items-center">
+            <div className="w-full md:w-[60%] lg:w-[50%] flex justify-between items-center">
               <Separator className="w-[30%]" />
               <p className="text-stone-500 font-extralight text-xs">
-                {" "}
-                OR CONTINUE WITH{" "}
+                OR CONTINUE WITH
               </p>
               <Separator className="w-[30%]" />
             </div>
