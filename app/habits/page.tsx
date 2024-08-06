@@ -3,7 +3,7 @@ import { signOut } from "./actions";
 import { createClient } from "@/utils/supabase/server";
 import { Button } from "@/components/ui/button";
 
-export default async function PrivatePage() {
+export default async function HabitPage() {
   const supabase = createClient();
 
   const { data, error } = await supabase.auth.getUser();
