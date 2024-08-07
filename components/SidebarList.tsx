@@ -11,7 +11,7 @@ const size = 20;
 
 export const NavbarList = [
   {
-    group: "Authenticated",
+    group: "General",
     items: [
       {
         link: "/habits",
@@ -36,7 +36,7 @@ export const NavbarList = [
     ],
   },
   {
-    group: "Unauthenticated",
+    group: "Others",
     items: [
       {
         link: "/about-us",
