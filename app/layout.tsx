@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { Toaster } from "@/components/ui/toaster";
 import "./globals.css";
-import { Sidebar } from "@/components/Sidebar";
+import { Sidebar } from "@/components/Sidebar/Sidebar";
 import { createClient } from "@/utils/supabase/server";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -22,15 +22,18 @@ export default async function RootLayout({
     data: { user },
   } = await supabase.auth.getUser();
   return (
-    <html lang="en">
-      <body className={inter.className}>
-        <main>
-          {user != null ? (
-            <div>
+    <html lang="en" className={inter.className}>
+      <body className="bg-background text-foreground">
+        <main className="flex h-screen overflow-hidden">
+          {user !== null ? (
+            <div className="flex-none h-full">
               <Sidebar />
             </div>
           ) : null}
-          <div>{children}</div>
+
+          <div className="flex-1 h-full overflow-y-auto md:ml-[var(--sidebar-width)]">
+            {children}
+          </div>
         </main>
         <Toaster />
       </body>
