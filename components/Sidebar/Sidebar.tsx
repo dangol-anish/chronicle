@@ -12,7 +12,7 @@ export async function Sidebar() {
 
   return (
     <>
-      <div className="hidden md:flex flex-col w-[250px] min-w-[250px] border-r min-h-screen justify-between">
+      <div className="hidden lg:flex flex-col w-[250px] min-w-[250px] border-r min-h-screen justify-between">
         <div className="flex flex-col ">
           <SidebarName />
           <SidebarMenuItem />

@@ -16,15 +16,15 @@ const SidebarMenuItem = ({}) => {
   return (
     <div>
       <Command>
-        <CommandList className="bg-slate-100 px-5">
+        <CommandList className="px-5">
           <CommandEmpty>No Items Found</CommandEmpty>
           {menuList.map((menu: any, key: number) => (
             <CommandGroup key={key} heading={menu.group}>
               {menu.items.map((options: any, optionKey: number) => (
                 <Link key={optionKey} href={options.link}>
                   <CommandItem
-                    className={`flex gap-2 items-center hover:cursor-pointer  ${
-                      pathname === options.link ? "bg-slate-200 rounded-sm" : ""
+                    className={`flex gap-2 items-center hover:cursor-pointer text-[16px]  ${
+                      pathname === options.link ? "bg-stone-100 rounded-sm" : ""
                     }`}
                     key={optionKey}
                   >
