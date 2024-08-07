@@ -25,12 +25,11 @@ export default async function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <main>
-          {user !== null ? (
+          {user != null ? (
             <div>
               <Sidebar />
             </div>
           ) : null}
-
           <div>{children}</div>
         </main>
         <Toaster />
