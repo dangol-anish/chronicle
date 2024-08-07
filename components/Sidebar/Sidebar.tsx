@@ -1,5 +1,4 @@
 import { createClient } from "@/utils/supabase/server";
-import { ComboboxDemo } from "./UserContent";
 
 export async function Sidebar() {
   const supabase = createClient();
@@ -10,9 +9,7 @@ export async function Sidebar() {
 
   return (
     <>
-      <div className="hidden md:flex flex-col w-[250px] min-w-[250px] border-r min-h-screen h-full ">
-        <ComboboxDemo user={user} />
-      </div>
+      <div className="hidden p-5 md:flex flex-col w-[250px] min-w-[250px] border-r min-h-screen h-full"></div>
     </>
   );
 }
