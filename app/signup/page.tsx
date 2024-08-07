@@ -1,8 +1,6 @@
 import { Separator } from "@/components/ui/separator";
-
 import { Kanban } from "lucide-react";
 import Link from "next/link";
-
 import { OAuthButtons } from "@/components/ui/oauth-signin";
 import { SignupForm } from "@/components/SignupForm";
 

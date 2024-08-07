@@ -1,9 +1,5 @@
-import { login } from "./actions";
-import { redirect } from "next/navigation";
-import { createClient } from "@/utils/supabase/server";
 import { OAuthButtons } from "@/components/ui/oauth-signin";
 import { Kanban } from "lucide-react";
-
 import { Separator } from "@/components/ui/separator";
 import Link from "next/link";
 import { LoginForm } from "@/components/LoginForm";
