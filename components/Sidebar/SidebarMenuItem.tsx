@@ -16,8 +16,8 @@ const SidebarMenuItem = ({}) => {
   return (
     <div>
       <Command>
-        <CommandList>
-          <CommandEmpty>...</CommandEmpty>
+        <CommandList className="bg-slate-100 px-5">
+          <CommandEmpty>No Items Found</CommandEmpty>
           {menuList.map((menu: any, key: number) => (
             <CommandGroup key={key} heading={menu.group}>
               {menu.items.map((options: any, optionKey: number) => (

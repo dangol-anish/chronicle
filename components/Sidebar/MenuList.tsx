@@ -1,11 +1,14 @@
 import {
   Book,
   Calendar,
+  ChartArea,
   CircleHelp,
   CircuitBoard,
   ClipboardType,
+  Clock,
   FileQuestion,
   Folder,
+  HelpCircle,
   Notebook,
   Settings,
   Timer,
@@ -22,81 +25,39 @@ export const menuList = [
     group: "General",
     items: [
       {
-        link: "/home",
-        text: "Home",
+        link: "/habits",
+        text: "Habits",
         icon: <Home size={20} />,
       },
-      // {
-      //   link: "/search",
-      //   text: "Search",
-      //   icon: <Search size={20} />,
-      // },
       {
-        link: "/settings",
-        text: "Settings",
-        icon: <Settings size={20} />,
-      },
-    ],
-  },
-  {
-    group: "Main",
-    items: [
-      {
-        link: "/board",
-        text: "Board",
-        icon: <ClipboardType size={20} />,
-      },
-      {
-        link: "/journal",
-        text: "Journal",
+        link: "/journals",
+        text: "Journals",
         icon: <Book size={20} />,
-      },
-      {
-        link: "/notes",
-        text: "Notes",
-        icon: <Notebook size={20} />,
       },
       {
         link: "/pomodoro",
         text: "Pomodoro",
-        icon: <Timer size={20} />,
+        icon: <Clock size={20} />,
       },
       {
-        link: "/reminder",
-        text: "Reminder",
-        icon: <Calendar size={20} />,
+        link: "/insights",
+        text: "Insights",
+        icon: <ChartArea size={20} />,
       },
-
-      // {
-      //   link: "/resources",
-      //   text: "Resources",
-      //   icon: <Folder size={20} />,
-      // },
-
-      // {
-      //   link: "/flashcard",
-      //   text: "Flash Card",
-      //   icon: <FileQuestion size={20} />,
-      // },
     ],
   },
   {
     group: "Others",
     items: [
       {
-        link: "/aboutUs",
-        text: "About Us",
-        icon: <Users size={20} />,
+        link: "/settings",
+        text: "Settings",
+        icon: <Settings size={20} />,
       },
       {
         link: "/help",
         text: "Help",
-        icon: <CircleHelp size={20} />,
-      },
-      {
-        link: "/trash",
-        text: "Trash",
-        icon: <Trash size={20} />,
+        icon: <HelpCircle size={20} />,
       },
     ],
   },
