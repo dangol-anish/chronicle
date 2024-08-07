@@ -27,3 +27,16 @@ export async function oAuthSignIn(provider: Provider) {
 
   return redirect(data.url);
 }
+
+export async function signOut() {
+  const supabase = createClient();
+
+  try {
+    await supabase.auth.signOut();
+    redirect("/login");
+  } catch (error: unknown) {
+    const errorMessage =
+      error instanceof Error ? error.message : "An unknown error occurred";
+    redirect(`/login`);
+  }
+}
