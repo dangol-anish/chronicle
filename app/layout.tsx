@@ -27,7 +27,7 @@ export default async function RootLayout({
       <body className="bg-background text-foreground">
         <main className="flex h-screen overflow-hidden w-screen flex-col lg:flex-row">
           {user !== null ? (
-            <div className="">
+            <div>
               <Sidebar />
               <SidebarSm />
             </div>

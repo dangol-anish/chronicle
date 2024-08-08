@@ -59,7 +59,6 @@ const UserItem: NextPage<Props> = async ({}) => {
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
-      <div className=" px-4 outline-slate-400 text-sm py-2 flex justify-between items-center"></div>
     </>
   );
 };

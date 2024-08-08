@@ -1,7 +1,14 @@
+import { SidebarName } from "./SidebarName";
+
 export function SidebarSm() {
   return (
     <>
-      <div className="h-[50px] border wf lg:hidden">Sidebar Small</div>
+      <div className="h-[50px]  lg:hidden">
+        <div className="">
+          <SidebarName />
+        </div>
+        <div></div>
+      </div>
     </>
   );
 }
