@@ -34,8 +34,8 @@ const UserItem: NextPage<Props> = async ({}) => {
           <EllipsisVertical />
         </DropdownMenuTrigger>
         <DropdownMenuContent>
-          <DropdownMenuLabel>My Account</DropdownMenuLabel>
-          <DropdownMenuLabel className="font-medium text-xs text-stone-500">
+          <DropdownMenuLabel className="text-lg">My Account</DropdownMenuLabel>
+          <DropdownMenuLabel className="font-medium text-xs text-stone-900 flex flex-col gap-1">
             <p>{user?.user_metadata.user_name}</p>
             <p>{user?.email}</p>
           </DropdownMenuLabel>

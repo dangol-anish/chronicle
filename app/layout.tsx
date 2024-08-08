@@ -4,6 +4,7 @@ import { Toaster } from "@/components/ui/toaster";
 import "./globals.css";
 import { Sidebar } from "@/components/Sidebar/Sidebar";
 import { createClient } from "@/utils/supabase/server";
+import { SidebarSm } from "@/components/Sidebar/SidebarSm";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -24,16 +25,15 @@ export default async function RootLayout({
   return (
     <html lang="en" className={inter.className}>
       <body className="bg-background text-foreground">
-        <main className="flex h-screen overflow-hidden">
+        <main className="flex h-screen overflow-hidden w-screen flex-col lg:flex-row">
           {user !== null ? (
-            <div className="flex-none h-full">
+            <div className="">
               <Sidebar />
+              <SidebarSm />
             </div>
           ) : null}
 
-          <div className="flex-1 h-full overflow-y-auto md:ml-[var(--sidebar-width)]">
-            {children}
-          </div>
+          <div className="">{children}</div>
         </main>
         <Toaster />
       </body>
