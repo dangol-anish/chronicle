@@ -41,15 +41,18 @@ const UserItem: NextPage<Props> = async ({}) => {
           </DropdownMenuLabel>
 
           <DropdownMenuSeparator />
-          <DropdownMenuItem>
-            <Link href="/settings">Settings</Link>
-          </DropdownMenuItem>
-          <DropdownMenuItem>
-            <Link href="/help">Help</Link>
-          </DropdownMenuItem>
+
+          <Link href="/settings">
+            <DropdownMenuItem>Settings</DropdownMenuItem>
+          </Link>
+
+          <Link href="/help">
+            <DropdownMenuItem>Help</DropdownMenuItem>
+          </Link>
+
           <DropdownMenuItem>
             <form className="w-full" action={signOut}>
-              <button className="w-full flex justify-start items-center">
+              <button className="w-full flex justify-start items-center cursor-default">
                 Logout
               </button>
             </form>
