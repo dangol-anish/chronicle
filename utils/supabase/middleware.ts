@@ -53,9 +53,10 @@ export async function updateSession(request: NextRequest) {
   } else {
     if (
       url.pathname.startsWith("/login") ||
-      url.pathname.startsWith("/signup")
+      url.pathname.startsWith("/signup") ||
+      url.pathname === "/"
     ) {
-      // user is logged in but trying to access login or signup page, redirect to a protected page
+      // user is logged in but trying to access login, signup, or root page, redirect to a protected page
       url.pathname = "/habits";
       return NextResponse.redirect(url);
     }

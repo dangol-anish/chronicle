@@ -12,6 +12,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import Link from "next/link";
 
 interface Props {}
 
@@ -40,16 +41,17 @@ const UserItem: NextPage<Props> = async ({}) => {
           </DropdownMenuLabel>
 
           <DropdownMenuSeparator />
-          <DropdownMenuItem>Profile</DropdownMenuItem>
-          <DropdownMenuItem>Billing</DropdownMenuItem>
-          <DropdownMenuItem>Team</DropdownMenuItem>
           <DropdownMenuItem>
-            {" "}
-            <form action={signOut}>
-              <Button className="bg-white text-slate-950 p-0 hover:bg-white flex gap-2 items-center">
-                <LogOut size={20} />
+            <Link href="/settings">Settings</Link>
+          </DropdownMenuItem>
+          <DropdownMenuItem>
+            <Link href="/help">Help</Link>
+          </DropdownMenuItem>
+          <DropdownMenuItem>
+            <form className="w-full" action={signOut}>
+              <button className="w-full flex justify-start items-center">
                 Logout
-              </Button>
+              </button>
             </form>
           </DropdownMenuItem>
         </DropdownMenuContent>
