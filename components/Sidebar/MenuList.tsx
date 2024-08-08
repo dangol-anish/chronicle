@@ -1,24 +1,7 @@
-import {
-  Book,
-  Calendar,
-  ChartArea,
-  CircleHelp,
-  CircuitBoard,
-  ClipboardType,
-  Clock,
-  FileQuestion,
-  Folder,
-  HelpCircle,
-  Notebook,
-  Settings,
-  Timer,
-  Trash,
-  User,
-  UserRound,
-  Users,
-  icons,
-} from "lucide-react";
-import { Search, Home } from "lucide-react";
+import { Book, ChartArea, Clock, HelpCircle, Settings } from "lucide-react";
+import { Home } from "lucide-react";
+
+const iconSize = 20;
 
 export const menuList = [
   {
@@ -27,22 +10,22 @@ export const menuList = [
       {
         link: "/habits",
         text: "Habits",
-        icon: <Home size={20} />,
+        icon: <Home size={iconSize} />,
       },
       {
         link: "/journals",
         text: "Journals",
-        icon: <Book size={20} />,
+        icon: <Book size={iconSize} />,
       },
       {
         link: "/pomodoro",
         text: "Pomodoro",
-        icon: <Clock size={20} />,
+        icon: <Clock size={iconSize} />,
       },
       {
         link: "/insights",
         text: "Insights",
-        icon: <ChartArea size={20} />,
+        icon: <ChartArea size={iconSize} />,
       },
     ],
   },
@@ -52,12 +35,12 @@ export const menuList = [
       {
         link: "/settings",
         text: "Settings",
-        icon: <Settings size={20} />,
+        icon: <Settings size={iconSize} />,
       },
       {
         link: "/help",
         text: "Help",
-        icon: <HelpCircle size={20} />,
+        icon: <HelpCircle size={iconSize} />,
       },
     ],
   },

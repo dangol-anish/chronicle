@@ -25,16 +25,16 @@ const UserItem: NextPage<Props> = async ({}) => {
   return (
     <>
       <DropdownMenu>
-        <DropdownMenuTrigger className="border mx-5 p-3 rounded-md flex items-center justify-between">
+        <DropdownMenuTrigger className="lg:border p-3 rounded-md flex items-center justify-between ">
           <Avatar>
             <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
             <AvatarFallback>CN</AvatarFallback>
           </Avatar>
-          <p>{user?.user_metadata.user_name}</p>
-          <EllipsisVertical />
+          <p className="hidden lg:flex">{user?.user_metadata.user_name}</p>
+          <EllipsisVertical className="hidden lg:flex" />
         </DropdownMenuTrigger>
         <DropdownMenuContent>
-          <DropdownMenuLabel className="text-lg">My Account</DropdownMenuLabel>
+          <p className="px-2 text-lg font-bold">My Account</p>
           <DropdownMenuLabel className="font-medium text-xs text-stone-900 flex flex-col gap-1">
             <p>{user?.user_metadata.user_name}</p>
             <p>{user?.email}</p>

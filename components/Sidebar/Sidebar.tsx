@@ -12,8 +12,8 @@ export async function Sidebar() {
 
   return (
     <>
-      <div className="hidden lg:flex flex-col w-[250px] min-w-[250px] border-r min-h-screen justify-between py-6">
-        <div className="flex flex-col gap-5">
+      <div className="hidden lg:flex flex-col w-[250px] min-w-[250px] border-r min-h-screen justify-between py-6 px-4">
+        <div className="flex flex-col gap-2">
           <SidebarName />
           <SidebarMenuItem />
         </div>

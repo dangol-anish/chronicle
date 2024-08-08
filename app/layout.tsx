@@ -25,7 +25,7 @@ export default async function RootLayout({
   return (
     <html lang="en" className={inter.className}>
       <body className="bg-background text-foreground">
-        <main className="flex h-screen overflow-hidden w-screen flex-col lg:flex-row">
+        <main className="flex h-screen overflow-hidden w-screen flex-col ">
           {user !== null ? (
             <div>
               <Sidebar />
