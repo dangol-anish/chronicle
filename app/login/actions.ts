@@ -23,6 +23,6 @@ export async function login(formData: FormData) {
     };
   }
 
-  revalidatePath("/", "layout");
+  revalidatePath("/habits", "layout");
   redirect("/habits");
 }
