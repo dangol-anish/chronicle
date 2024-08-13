@@ -66,7 +66,9 @@ function FormContent({ pending }: FormContentProps) {
         </div>
       </div>
       <DialogFooter>
-        <Button type="submit">{pending ? "Saving..." : "Save"}</Button>
+        <Button disabled={pending} type="submit">
+          {pending ? "Saving..." : "Save"}
+        </Button>
       </DialogFooter>
     </>
   );
