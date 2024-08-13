@@ -14,8 +14,6 @@ export async function addHabits(formData: FormData) {
     habitNote: formData.get("habitNote") as string,
   };
 
-  console.log(data);
-
   const { error } = await supabase.from("habits").insert({
     user_id: user?.id,
     h_name: data.habitName,
