@@ -1,4 +1,5 @@
 "use server";
+
 import { createClient } from "@/utils/supabase/server";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
@@ -29,4 +30,15 @@ export async function addHabits(formData: FormData) {
 
   revalidatePath("/habits", "layout");
   redirect("/habits");
+}
+
+export async function getHabits() {
+  const supabase = await createClient();
+
+  const { data: habits } = await supabase
+    .from("habits")
+    .select()
+    .order("inserted_at", { ascending: false });
+
+  return habits;
 }

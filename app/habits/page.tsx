@@ -1,4 +1,4 @@
-import { HabitsList } from "@/components/Habits/HabitsList";
+import HabitsList from "@/components/Habits/HabitsList";
 
 export default async function HabitsPage() {
   return (
