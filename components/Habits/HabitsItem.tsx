@@ -10,6 +10,7 @@ import {
 } from "@/components/ui/table";
 import { Checkbox } from "@/components/ui/checkbox";
 import { HabitsItemProps } from "@/types/types";
+import { formatDate } from "@/utils/dateFormatter";
 
 export function HabitsItem({ habits }: HabitsItemProps) {
   // Collect all unique log dates and reverse their order
@@ -26,7 +27,7 @@ export function HabitsItem({ habits }: HabitsItemProps) {
           <TableHead className="w-[150px]">Name</TableHead>
           {allLogDates?.map((date, index) => (
             <TableHead key={index} className="w-[100px]">
-              {new Date(date).toLocaleDateString()}
+              {formatDate(date)}
             </TableHead>
           ))}
         </TableRow>
