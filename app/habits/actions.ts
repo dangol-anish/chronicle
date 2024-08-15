@@ -35,10 +35,29 @@ export async function addHabits(formData: FormData) {
 export async function getHabits() {
   const supabase = await createClient();
 
-  const { data: habits } = await supabase
+  const { data: habitsWithLogs, error } = await supabase
     .from("habits")
-    .select()
+    .select(
+      `
+      h_id, 
+      h_name, 
+      h_question, 
+      h_note, 
+      inserted_at, 
+      habits_log (
+        log_id, 
+        log_date, 
+        log_time, 
+        is_completed, 
+        inserted_at
+      )
+    `
+    )
     .order("inserted_at", { ascending: false });
 
-  return habits;
+  if (error) {
+    throw new Error(`Error fetching habits and logs: ${error.message}`);
+  }
+
+  return habitsWithLogs;
 }
