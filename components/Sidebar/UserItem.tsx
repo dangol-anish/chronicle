@@ -25,7 +25,7 @@ const UserItem: NextPage<Props> = async ({}) => {
   return (
     <>
       <DropdownMenu>
-        <DropdownMenuTrigger className="lg:border p-3 rounded-md flex items-center justify-between ">
+        <DropdownMenuTrigger className="lg:border lg:p-3 rounded-md flex items-center justify-between ">
           <Avatar>
             <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
             <AvatarFallback>CN</AvatarFallback>
