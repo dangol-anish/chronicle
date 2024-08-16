@@ -41,7 +41,7 @@ END;
 $$ LANGUAGE plpgsql;
 
 -- cron job for daily habits creation
-SELECT cron.schedule('daily_habit_logs', '0 0 * * *', 'CALL generate_daily_habit_logs()');
+SELECT cron.schedule('daily_habit_logs', '0 0 * * *', 'SELECT generate_daily_habit_logs()');
 
 -- create a 7 day log for every new habit
 CREATE OR REPLACE FUNCTION create_habit_logs_for_last_7_days() RETURNS TRIGGER AS $$
