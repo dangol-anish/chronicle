@@ -13,7 +13,9 @@ export function SidebarSmMenuItem() {
           menu.items.map((options: any, optionKey: number) => (
             <Link
               className={`flex items-center hover:cursor-pointer p-2 ${
-                pathname === options.link ? "bg-stone-100 rounded-sm" : ""
+                pathname === options.link
+                  ? "bg-stone-100 dark:bg-slate-700 rounded-sm"
+                  : ""
               }`}
               key={optionKey}
               href={options.link}

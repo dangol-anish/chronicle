@@ -102,7 +102,7 @@ export function HabitsItem({ habits }: HabitsItemProps) {
 
                   return (
                     <TableCell key={dateIndex} className={checkboxClassName}>
-                      <Checkbox checked={log.is_completed} disabled />
+                      <Checkbox className="md:p-2" checked={log.is_completed} />
                     </TableCell>
                   );
                 })}

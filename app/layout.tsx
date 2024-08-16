@@ -5,6 +5,7 @@ import "./globals.css";
 import { Sidebar } from "@/components/Sidebar/Sidebar";
 import { createClient } from "@/utils/supabase/server";
 import { SidebarSm } from "@/components/Sidebar/SidebarSm";
+import { ThemeProvider } from "@/components/theme-provider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -25,17 +26,24 @@ export default async function RootLayout({
   return (
     <html lang="en" className={inter.className}>
       <body className="bg-background text-foreground">
-        <main className="flex h-screen overflow-hidden w-screen flex-col lg:flex-row ">
-          {user !== null ? (
-            <div>
-              <Sidebar />
-              <SidebarSm />
-            </div>
-          ) : null}
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <main className="flex h-screen overflow-hidden w-screen flex-col lg:flex-row ">
+            {user !== null ? (
+              <div>
+                <Sidebar />
+                <SidebarSm />
+              </div>
+            ) : null}
 
-          <div className="w-full">{children}</div>
-        </main>
-        <Toaster />
+            <div className="w-full">{children}</div>
+          </main>
+          <Toaster />
+        </ThemeProvider>
       </body>
     </html>
   );

@@ -24,7 +24,9 @@ const SidebarMenuItem = ({}) => {
                 <Link key={optionKey} href={options.link}>
                   <CommandItem
                     className={`flex gap-2 items-center hover:cursor-pointer text-[16px]  ${
-                      pathname === options.link ? "bg-stone-100 rounded-sm" : ""
+                      pathname === options.link
+                        ? "bg-stone-100 dark:bg-slate-700 rounded-sm"
+                        : ""
                     }`}
                     key={optionKey}
                   >
