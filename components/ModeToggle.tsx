@@ -5,7 +5,6 @@ import { useTheme } from "next-themes";
 
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { Moon, Sun, SunMoon } from "lucide-react";
-import { Separator } from "@/components/ui/separator";
 
 export function ModeToggle() {
   const { theme, setTheme } = useTheme();
