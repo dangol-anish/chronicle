@@ -14,7 +14,7 @@ export function HabitCheckBox({ log }: any) {
   };
 
   return (
-    <form>
+    <form className="flex justify-center items-center py-3">
       <Checkbox
         disabled={pending}
         className="md:p-2"
