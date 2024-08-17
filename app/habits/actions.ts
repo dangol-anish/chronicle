@@ -87,7 +87,7 @@ export async function updateHabitLog(formData: FormData) {
     .eq("log_id", log_id);
 
   if (error) {
-    throw new Error("Error updating habit log");
+    throw new Error(error.message);
   }
 
   // Revalidate the path to reflect the changes

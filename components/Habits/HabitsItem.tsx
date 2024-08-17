@@ -46,25 +46,27 @@ export function HabitsItem({ habits }: HabitsItemProps) {
     .filter((value, index, self) => self.indexOf(value) === index)
     .sort((a, b) => new Date(b).getTime() - new Date(a).getTime());
 
-  const renderTableHeaders = (): JSX.Element[] => {
-    const headers: JSX.Element[] = [];
+  const past7Days = allLogDates.filter((date) => {
+    const dateDiff =
+      (new Date().getTime() - new Date(date).getTime()) / (1000 * 60 * 60 * 24);
+    return dateDiff < 7;
+  });
 
-    for (let i = 0; i < allLogDates.length; i++) {
-      const date = allLogDates[i];
+  const renderTableHeaders = (): JSX.Element[] => {
+    return past7Days.map((date, i) => {
       let className = "w-[100px] text-center";
 
-      if (i >= 7) className += " hidden lg:table-cell";
-      if (i >= 5 && i < 7) className += " hidden md:table-cell";
+      // Control visibility based on screen size and index
       if (i >= 4 && i < 5) className += " hidden sm:table-cell";
+      if (i >= 5 && i < 7) className += " hidden md:table-cell";
+      if (i >= 7) className += " hidden lg:table-cell";
 
-      headers.push(
+      return (
         <TableHead key={i} className={className}>
           {formatDate(date)}
         </TableHead>
       );
-    }
-
-    return headers;
+    });
   };
 
   return (
@@ -82,19 +84,20 @@ export function HabitsItem({ habits }: HabitsItemProps) {
             .map((habit, habitIndex) => (
               <TableRow key={habitIndex}>
                 <TableCell className="font-medium">{habit.h_name}</TableCell>
-                {allLogDates.map((date, dateIndex) => {
+                {past7Days.map((date, dateIndex) => {
                   const log = habit.habits_log.find(
                     (log) => log.log_date === date
                   ) || { is_completed: false, log_id: null };
 
                   let checkboxClassName = "text-center";
 
-                  if (dateIndex >= 7)
-                    checkboxClassName += " hidden lg:table-cell";
-                  if (dateIndex >= 5 && dateIndex < 7)
-                    checkboxClassName += " hidden md:table-cell";
+                  // Control visibility based on screen size and index
                   if (dateIndex >= 4 && dateIndex < 5)
                     checkboxClassName += " hidden sm:table-cell";
+                  if (dateIndex >= 5 && dateIndex < 7)
+                    checkboxClassName += " hidden md:table-cell";
+                  if (dateIndex >= 7)
+                    checkboxClassName += " hidden lg:table-cell";
 
                   return (
                     <TableCell key={dateIndex} className={checkboxClassName}>
