@@ -61,3 +61,35 @@ export async function getHabits() {
 
   return habitsWithLogs;
 }
+
+export async function updateHabitLog(formData: FormData) {
+  const supabase = createClient();
+
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  if (!user) {
+    throw new Error("User is not logged in");
+  }
+
+  // Get the log_id and is_completed status from formData
+  const log_id = formData.get("log_id");
+  const is_completed = formData.get("is_completed") === "true";
+
+  if (!log_id) {
+    throw new Error("Log ID is required");
+  }
+
+  const { error } = await supabase
+    .from("habits_log")
+    .update({ is_completed })
+    .eq("log_id", log_id);
+
+  if (error) {
+    throw new Error("Error updating habit log");
+  }
+
+  // Revalidate the path to reflect the changes
+  revalidatePath("/todos");
+}

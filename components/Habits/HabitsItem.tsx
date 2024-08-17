@@ -8,7 +8,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { Checkbox } from "@/components/ui/checkbox";
+
 import { HabitsItemProps } from "@/types/types";
 import { formatDate } from "@/utils/dateFormatter";
 import {
@@ -19,12 +19,10 @@ import {
   PaginationNext,
   PaginationPrevious,
 } from "@/components/ui/pagination";
+import { HabitCheckBox } from "./HabitCheckBox";
 
 export function HabitsItem({ habits }: HabitsItemProps) {
-  // Handle null or undefined habits
   const effectiveHabits = habits || [];
-
-  // Pagination state
   const rowsPerPage = 8;
   const [currentPage, setCurrentPage] = useState(1);
   const totalPages = Math.ceil(effectiveHabits.length / rowsPerPage);
@@ -43,13 +41,11 @@ export function HabitsItem({ habits }: HabitsItemProps) {
     }
   };
 
-  // Collect all unique log dates and reverse their order
   const allLogDates: string[] = effectiveHabits
     .flatMap((habit) => habit.habits_log.map((log) => log.log_date))
     .filter((value, index, self) => self.indexOf(value) === index)
     .sort((a, b) => new Date(b).getTime() - new Date(a).getTime());
 
-  // Tailwind responsive classes for column visibility
   const renderTableHeaders = (): JSX.Element[] => {
     const headers: JSX.Element[] = [];
 
@@ -89,10 +85,10 @@ export function HabitsItem({ habits }: HabitsItemProps) {
                 {allLogDates.map((date, dateIndex) => {
                   const log = habit.habits_log.find(
                     (log) => log.log_date === date
-                  ) || { is_completed: false };
+                  ) || { is_completed: false, log_id: null };
+
                   let checkboxClassName = "text-center";
 
-                  // Hide checkboxes on smaller screens
                   if (dateIndex >= 7)
                     checkboxClassName += " hidden lg:table-cell";
                   if (dateIndex >= 5 && dateIndex < 7)
@@ -102,7 +98,7 @@ export function HabitsItem({ habits }: HabitsItemProps) {
 
                   return (
                     <TableCell key={dateIndex} className={checkboxClassName}>
-                      <Checkbox className="md:p-2" checked={log.is_completed} />
+                      <HabitCheckBox log={log} />
                     </TableCell>
                   );
                 })}
