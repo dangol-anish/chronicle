@@ -17,7 +17,7 @@ export function HabitCheckBox({ log }: any) {
     <form className="flex justify-center items-center py-3">
       <Checkbox
         disabled={pending}
-        className="md:p-2"
+        className="md:p-[9px]"
         checked={log.is_completed}
         onCheckedChange={(val) => {
           if (val !== "indeterminate") {
