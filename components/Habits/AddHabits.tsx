@@ -92,6 +92,7 @@ export function AddHabits() {
       });
       return;
     }
+    window.location.reload();
     formRef.current?.reset();
     await wait();
     setOpen(false);
