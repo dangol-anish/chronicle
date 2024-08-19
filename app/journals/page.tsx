@@ -1,3 +1,9 @@
-export default function JournalsPage() {
-  return <>Journals Page</>;
+import { JournalsHeader } from "@/components/Journals/JournalsHeader";
+
+export default async function JournalsPage() {
+  return (
+    <>
+      <JournalsHeader />
+    </>
+  );
 }

@@ -11,8 +11,12 @@ import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { Separator } from "@radix-ui/react-separator";
 
-const SidebarMenuItem = ({}) => {
+const SidebarMenuItem = () => {
   const pathname = usePathname();
+
+  const isActive = (link: string) =>
+    pathname === link || pathname.startsWith(link);
+
   return (
     <div>
       <Command>
@@ -23,12 +27,11 @@ const SidebarMenuItem = ({}) => {
               {menu.items.map((options: any, optionKey: number) => (
                 <Link key={optionKey} href={options.link}>
                   <CommandItem
-                    className={`flex gap-2 items-center hover:cursor-pointer text-[16px]  ${
-                      pathname === options.link
+                    className={`flex gap-2 items-center hover:cursor-pointer text-[16px] ${
+                      isActive(options.link)
                         ? "bg-stone-100 dark:bg-slate-700 rounded-sm"
                         : ""
                     }`}
-                    key={optionKey}
                   >
                     <p>{options.icon}</p>
                     <p>{options.text}</p>

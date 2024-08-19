@@ -100,8 +100,8 @@ export function AddHabits() {
 
   return (
     <Dialog open={open} onOpenChange={(isOpen) => setOpen(isOpen)}>
-      <DialogTrigger className="border py-2 px-4 rounded-md hover:bg-stone-100 font-medium">
-        <Plus className="md:hidden" /> <p className="hidden md:flex">Add</p>
+      <DialogTrigger className="border py-2 px-4 rounded-md hover:bg-stone-100 font-medium hover:text-slate-900">
+        <Plus className="md:hidden" /> <p className="hidden md:flex ">Add</p>
       </DialogTrigger>
       <DialogContent className="w-[80%] lg:w-full rounded-md">
         <form
