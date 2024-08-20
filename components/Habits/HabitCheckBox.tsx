@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Checkbox } from "@/components/ui/checkbox";
 import { useFormStatus } from "react-dom";
 import { updateHabitLog } from "@/app/habits/actions";
+import Link from "next/link";
 
 export function HabitCheckBox({ log }: any) {
   const { pending } = useFormStatus();

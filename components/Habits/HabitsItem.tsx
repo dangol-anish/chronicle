@@ -20,6 +20,7 @@ import {
   PaginationPrevious,
 } from "@/components/ui/pagination";
 import { HabitCheckBox } from "./HabitCheckBox";
+import Link from "next/link";
 
 export function HabitsItem({ habits }: HabitsItemProps) {
   const effectiveHabits = habits || [];
@@ -83,7 +84,9 @@ export function HabitsItem({ habits }: HabitsItemProps) {
             .slice(startIndex, endIndex)
             .map((habit, habitIndex) => (
               <TableRow key={habitIndex}>
-                <TableCell className="font-medium">{habit.h_name}</TableCell>
+                <TableCell className="font-medium">
+                  <Link href={`/habits/${habit.h_id}`}>{habit.h_name}</Link>
+                </TableCell>
                 {past7Days.map((date, dateIndex) => {
                   const log = habit.habits_log.find(
                     (log) => log.log_date === date
