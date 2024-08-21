@@ -19,7 +19,6 @@ export function HabitCheckBox({ log }: any) {
     try {
       await updateHabitLog(formData);
     } catch (error) {
-      // Revert the state if there's an error
       setIsCompleted(!val);
       console.error("Failed to update habit log:", error);
     }
