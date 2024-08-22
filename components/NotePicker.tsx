@@ -17,13 +17,14 @@ export function NotePicker() {
   return (
     <>
       <form
+        className="flex items-center flex-col w-full h-screen"
         onSubmit={async (e) => {
           e.preventDefault();
 
           await clientAction(content);
         }}
       >
-        <p>Add a new journal</p>
+        <h2>Add a new journal</h2>
         <Tiptap
           content={content}
           onChange={(newContent: string) => handleContentChange(newContent)}

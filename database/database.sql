@@ -60,3 +60,5 @@ CREATE TRIGGER after_habit_insert
 AFTER INSERT ON habits
 FOR EACH ROW
 EXECUTE FUNCTION create_habit_logs_for_last_7_days();
+
+-- journal

@@ -8,7 +8,7 @@ import { useState } from "react";
 export default function AddJournal() {
   return (
     <>
-      <Link className="flex items-center" href="/journals">
+      <Link className="flex items-center max-h-screen" href="/journals">
         <ChevronLeft />
         <header>Go Back</header>
       </Link>

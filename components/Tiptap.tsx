@@ -23,9 +23,15 @@ const Tiptap = ({ content, onChange }: any) => {
   });
 
   return (
-    <div>
+    <div className="flex flex-col border rounded-md gap-3 p-5 w-full">
       <Toolbar editor={editor} content={content} />
-      <EditorContent style={{ whiteSpace: "pre-line" }} editor={editor} />
+      <EditorContent
+        style={{
+          height: "70vh",
+          overflowY: "auto",
+        }}
+        editor={editor}
+      />
     </div>
   );
 };
