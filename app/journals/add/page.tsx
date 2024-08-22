@@ -14,10 +14,7 @@ export default function AddJournal() {
       </Link>
 
       <main>
-        <div>
-          <div>This the form</div>
-          <NotePicker />
-        </div>
+        <NotePicker />
       </main>
     </>
   );

@@ -6,13 +6,13 @@ import StarterKit from "@tiptap/starter-kit";
 import Toolbar from "./Toolbar";
 
 // external
-import Blockquote from "@tiptap/extension-blockquote";
-import BulletList from "@tiptap/extension-bullet-list";
 
 const Tiptap = ({ content, onChange }: any) => {
   const handleChange = (newContent: string) => {
+    console.log("Editor Content:", newContent); // Log the content to the console
     onChange(newContent);
   };
+
   const editor = useEditor({
     extensions: [StarterKit, Underline],
     editorProps: {

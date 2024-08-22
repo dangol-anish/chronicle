@@ -7,10 +7,11 @@ export function NotePicker() {
   const handleContentChange = (reason: any) => {
     setContent(reason);
   };
+
   return (
     <>
       <form>
-        <h1>Note Picker</h1>
+        <>Add a new journal</>
         <Tiptap
           content={content}
           onChange={(newContent: string) => handleContentChange(newContent)}

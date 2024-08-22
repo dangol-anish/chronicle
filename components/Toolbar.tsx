@@ -17,6 +17,7 @@ import {
   Heading1,
   Heading3,
 } from "lucide-react";
+import "@/app/journals/journals.module.css";
 
 type Props = {
   editor: Editor | null;
@@ -204,14 +205,13 @@ const Toolbar = ({ editor, content }: Props) => {
           <Redo className="w-5 h-5" />
         </button>
       </div>
-      {content && (
-        <button
-          type="submit"
-          className="px-4 bg-sky-700 text-white py-2 rounded-md"
-        >
-          Add
-        </button>
-      )}
+
+      <button
+        type="submit"
+        className="px-4 bg-sky-700 text-white py-2 rounded-md"
+      >
+        Add
+      </button>
     </div>
   );
 };
