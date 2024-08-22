@@ -10,7 +10,6 @@ import {
 } from "@/components/ui/table";
 
 import { HabitsItemProps } from "@/types/types";
-import { formatDate } from "@/utils/dateFormatter";
 import {
   Pagination,
   PaginationContent,
@@ -21,6 +20,7 @@ import {
 } from "@/components/ui/pagination";
 import { HabitCheckBox } from "./HabitCheckBox";
 import Link from "next/link";
+import { formatDate } from "@/utils/dateFormatter";
 
 export function HabitsItem({ habits }: HabitsItemProps) {
   const effectiveHabits = habits || [];
