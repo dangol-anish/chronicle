@@ -1,6 +1,7 @@
 "use client";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import Tiptap from "./Tiptap";
+import { useToast } from "./ui/use-toast";
 
 export function NotePicker() {
   const [content, setContent] = useState<string>("");
@@ -11,7 +12,7 @@ export function NotePicker() {
   return (
     <>
       <form>
-        <>Add a new journal</>
+        <p>Add a new journal</p>
         <Tiptap
           content={content}
           onChange={(newContent: string) => handleContentChange(newContent)}

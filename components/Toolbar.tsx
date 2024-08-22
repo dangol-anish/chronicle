@@ -17,7 +17,6 @@ import {
   Heading1,
   Heading3,
 } from "lucide-react";
-import "@/app/journals/journals.module.css";
 
 type Props = {
   editor: Editor | null;
@@ -165,19 +164,7 @@ const Toolbar = ({ editor, content }: Props) => {
         >
           <Quote className="w-5 h-5" />
         </button>
-        <button
-          onClick={(e) => {
-            e.preventDefault();
-            editor.chain().focus().setCode().run();
-          }}
-          className={
-            editor.isActive("code")
-              ? "bg-sky-700 text-white p-2 rounded-lg"
-              : "text-sky-400"
-          }
-        >
-          <Code className="w-5 h-5" />
-        </button>
+
         <button
           onClick={(e) => {
             e.preventDefault();
@@ -206,12 +193,14 @@ const Toolbar = ({ editor, content }: Props) => {
         </button>
       </div>
 
-      <button
-        type="submit"
-        className="px-4 bg-sky-700 text-white py-2 rounded-md"
-      >
-        Add
-      </button>
+      {content && (
+        <button
+          type="submit"
+          className="px-4 bg-sky-700 text-white py-2 rounded-md"
+        >
+          Add
+        </button>
+      )}
     </div>
   );
 };
