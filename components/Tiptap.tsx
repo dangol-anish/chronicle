@@ -1,15 +1,20 @@
 "use client";
 
 import { useEditor, EditorContent } from "@tiptap/react";
+import Underline from "@tiptap/extension-underline";
 import StarterKit from "@tiptap/starter-kit";
-import { Toolbar } from "./Toolbar";
+import Toolbar from "./Toolbar";
+
+// external
+import Blockquote from "@tiptap/extension-blockquote";
+import BulletList from "@tiptap/extension-bullet-list";
 
 const Tiptap = ({ content, onChange }: any) => {
   const handleChange = (newContent: string) => {
     onChange(newContent);
   };
   const editor = useEditor({
-    extensions: [StarterKit],
+    extensions: [StarterKit, Underline],
     editorProps: {
       attributes: {
         class: "flex flex-col px-4 py-3 justify-start border",
