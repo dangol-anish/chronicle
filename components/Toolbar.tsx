@@ -167,7 +167,7 @@ const Toolbar = ({ editor, content }: Props) => {
           className={`border px-3 py-2 rounded-md 
             ${
               editor.can().undo() &&
-              "bg-slate-900 text-white dark:bg-slate-900 dark:text-white"
+              "bg-slate-600 text-white dark:bg-slate-900 dark:text-white"
             }`}
         >
           <Undo className="w-5 h-5" />
@@ -180,7 +180,7 @@ const Toolbar = ({ editor, content }: Props) => {
           className={`border px-3 py-2 rounded-md 
             ${
               editor.can().redo() &&
-              "bg-slate-900 text-white dark:bg-slate-900 dark:text-white"
+              "bg-slate-600 text-white dark:bg-slate-900 dark:text-white"
             }`}
         >
           <Redo className="w-5 h-5" />
