@@ -17,6 +17,7 @@ import {
   Heading1,
   Heading3,
 } from "lucide-react";
+import { Button } from "./ui/button";
 
 type Props = {
   editor: Editor | null;
@@ -35,11 +36,12 @@ const Toolbar = ({ editor, content }: Props) => {
             e.preventDefault();
             editor.chain().focus().toggleBold().run();
           }}
-          className={
-            editor.isActive("bold")
-              ? "bg-sky-700"
-              : "text-slate-900 bg-white border px-3 py-2 rounded-md"
-          }
+          className={`border px-3 py-2 rounded-md 
+            ${
+              editor.isActive("bold")
+                ? "bg-slate-900 text-white dark:text-slate-900 dark:bg-white"
+                : "text-slate-900 bg-white dark:bg-slate-900 dark:text-white"
+            }`}
         >
           <Bold className="w-5 h-5" />
         </button>
@@ -48,11 +50,12 @@ const Toolbar = ({ editor, content }: Props) => {
             e.preventDefault();
             editor.chain().focus().toggleItalic().run();
           }}
-          className={
-            editor.isActive("italic")
-              ? "bg-sky-700"
-              : "text-slate-900 bg-white border px-3 py-2 rounded-md"
-          }
+          className={`border px-3 py-2 rounded-md 
+            ${
+              editor.isActive("italic")
+                ? "bg-slate-900 text-white dark:text-slate-900 dark:bg-white"
+                : "text-slate-900 bg-white dark:bg-slate-900 dark:text-white"
+            }`}
         >
           <Italic className="w-5 h-5" />
         </button>
@@ -61,11 +64,12 @@ const Toolbar = ({ editor, content }: Props) => {
             e.preventDefault();
             editor.chain().focus().toggleUnderline().run();
           }}
-          className={
-            editor.isActive("underline")
-              ? "bg-sky-700"
-              : "text-slate-900 bg-white border px-3 py-2 rounded-md"
-          }
+          className={`border px-3 py-2 rounded-md 
+            ${
+              editor.isActive("underline")
+                ? "bg-slate-900 text-white dark:text-slate-900 dark:bg-white"
+                : "text-slate-900 bg-white dark:bg-slate-900 dark:text-white"
+            }`}
         >
           <Underline className="w-5 h-5" />
         </button>
@@ -74,11 +78,12 @@ const Toolbar = ({ editor, content }: Props) => {
             e.preventDefault();
             editor.chain().focus().toggleStrike().run();
           }}
-          className={
-            editor.isActive("strike")
-              ? "bg-sky-700"
-              : "text-slate-900 bg-white border px-3 py-2 rounded-md"
-          }
+          className={`border px-3 py-2 rounded-md 
+            ${
+              editor.isActive("strike")
+                ? "bg-slate-900 text-white dark:text-slate-900 dark:bg-white"
+                : "text-slate-900 bg-white dark:bg-slate-900 dark:text-white"
+            }`}
         >
           <Strikethrough className="w-5 h-5" />
         </button>
@@ -87,11 +92,12 @@ const Toolbar = ({ editor, content }: Props) => {
             e.preventDefault();
             editor.chain().focus().toggleHeading({ level: 1 }).run();
           }}
-          className={
-            editor.isActive("heading", { level: 1 })
-              ? "bg-sky-700"
-              : "text-slate-900 bg-white border px-3 py-2 rounded-md"
-          }
+          className={`border px-3 py-2 rounded-md 
+            ${
+              editor.isActive("heading", { level: 1 })
+                ? "bg-slate-900 text-white dark:text-slate-900 dark:bg-white"
+                : "text-slate-900 bg-white dark:bg-slate-900 dark:text-white"
+            }`}
         >
           <Heading1 className="w-5 h-5" />
         </button>
@@ -100,11 +106,12 @@ const Toolbar = ({ editor, content }: Props) => {
             e.preventDefault();
             editor.chain().focus().toggleHeading({ level: 2 }).run();
           }}
-          className={
-            editor.isActive("heading", { level: 2 })
-              ? "bg-sky-700"
-              : "text-slate-900 bg-white border px-3 py-2 rounded-md"
-          }
+          className={`border px-3 py-2 rounded-md 
+            ${
+              editor.isActive("heading", { level: 2 })
+                ? "bg-slate-900 text-white dark:text-slate-900 dark:bg-white"
+                : "text-slate-900 bg-white dark:bg-slate-900 dark:text-white"
+            }`}
         >
           <Heading2 className="w-5 h-5" />
         </button>
@@ -113,11 +120,12 @@ const Toolbar = ({ editor, content }: Props) => {
             e.preventDefault();
             editor.chain().focus().toggleHeading({ level: 3 }).run();
           }}
-          className={
-            editor.isActive("heading", { level: 3 })
-              ? "bg-sky-700"
-              : "text-slate-900 bg-white border px-3 py-2 rounded-md"
-          }
+          className={`border px-3 py-2 rounded-md 
+            ${
+              editor.isActive("heading", { level: 3 })
+                ? "bg-slate-900 text-white dark:text-slate-900 dark:bg-white"
+                : "text-slate-900 bg-white dark:bg-slate-900 dark:text-white"
+            }`}
         >
           <Heading3 className="w-5 h-5" />
         </button>
@@ -127,11 +135,12 @@ const Toolbar = ({ editor, content }: Props) => {
             e.preventDefault();
             editor.chain().focus().toggleBulletList().run();
           }}
-          className={
-            editor.isActive("bulletList")
-              ? "bg-sky-700"
-              : "text-slate-900 bg-white border px-3 py-2 rounded-md"
-          }
+          className={`border px-3 py-2 rounded-md 
+            ${
+              editor.isActive("bulletList")
+                ? "bg-slate-900 text-white dark:text-slate-900 dark:bg-white"
+                : "text-slate-900 bg-white dark:bg-slate-900 dark:text-white"
+            }`}
         >
           <List className="w-5 h-5" />
         </button>
@@ -140,26 +149,14 @@ const Toolbar = ({ editor, content }: Props) => {
             e.preventDefault();
             editor.chain().focus().toggleOrderedList().run();
           }}
-          className={
-            editor.isActive("orderedList")
-              ? "bg-sky-700"
-              : "text-slate-900 bg-white border px-3 py-2 rounded-md"
-          }
+          className={`border px-3 py-2 rounded-md 
+            ${
+              editor.isActive("orderedList")
+                ? "bg-slate-900 text-white dark:text-slate-900 dark:bg-white"
+                : "text-slate-900 bg-white dark:bg-slate-900 dark:text-white"
+            }`}
         >
           <ListOrdered className="w-5 h-5" />
-        </button>
-        <button
-          onClick={(e) => {
-            e.preventDefault();
-            editor.chain().focus().toggleBlockquote().run();
-          }}
-          className={
-            editor.isActive("blockquote")
-              ? "bg-sky-700"
-              : "text-slate-900 bg-white border px-3 py-2 rounded-md"
-          }
-        >
-          <Quote className="w-5 h-5" />
         </button>
 
         <button
@@ -167,11 +164,11 @@ const Toolbar = ({ editor, content }: Props) => {
             e.preventDefault();
             editor.chain().focus().undo().run();
           }}
-          className={
-            editor.isActive("undo")
-              ? "bg-sky-700"
-              : "text-slate-900 bg-white border px-3 py-2 rounded-md hover:bg-sky-700 hover:text-slate-900 px-3 py-2 hover:rounded-lg"
-          }
+          className={`border px-3 py-2 rounded-md 
+            ${
+              editor.can().undo() &&
+              "bg-slate-900 text-white dark:bg-slate-900 dark:text-white"
+            }`}
         >
           <Undo className="w-5 h-5" />
         </button>
@@ -180,24 +177,19 @@ const Toolbar = ({ editor, content }: Props) => {
             e.preventDefault();
             editor.chain().focus().redo().run();
           }}
-          className={
-            editor.isActive("redo")
-              ? "bg-sky-700"
-              : "text-slate-900 bg-white border px-3 py-2 rounded-md hover:bg-sky-700 hover:text-slate-900 px-3 py-2 hover:rounded-lg"
-          }
+          className={`border px-3 py-2 rounded-md 
+            ${
+              editor.can().redo() &&
+              "bg-slate-900 text-white dark:bg-slate-900 dark:text-white"
+            }`}
         >
           <Redo className="w-5 h-5" />
         </button>
       </div>
 
-      {content && (
-        <button
-          type="submit"
-          className="px-4 bg-white border text-slate-900 py-2 rounded-md"
-        >
-          Add
-        </button>
-      )}
+      <Button type="submit" className=" ">
+        Add
+      </Button>
     </div>
   );
 };

@@ -27,7 +27,7 @@ const Tiptap = ({ content, onChange }: any) => {
       <Toolbar editor={editor} content={content} />
       <EditorContent
         style={{
-          height: "70vh",
+          height: "60vh",
           overflowY: "auto",
         }}
         editor={editor}

@@ -31,7 +31,9 @@ h3 {
 .tiptap {
   border: 1px solid whitesmoke;
   border-radius: 8px;
-  height: 70vh;
+  height: 60vh;
+  overflow-y: auto;
+  padding-left: 30px;
 }
 
 @layer base {
