@@ -2,18 +2,21 @@
 
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { Angry, Frown, Laugh, Meh, Smile } from "lucide-react";
-import { useState } from "react";
+import { SetStateAction, useState, Dispatch } from "react";
 
-export function CurrentMood() {
-  const [value, setValue] = useState("meh");
+interface CurrentMoodProps {
+  currentMood: string;
+  setCurrentMood: Dispatch<SetStateAction<string>>;
+}
 
+export function CurrentMood({ currentMood, setCurrentMood }: CurrentMoodProps) {
   return (
     <>
       <ToggleGroup
         type="single"
-        value={value}
+        value={currentMood}
         onValueChange={(value) => {
-          if (value) setValue(value);
+          if (value) setCurrentMood(value);
         }}
       >
         <ToggleGroupItem value="angry" aria-label="Toggle angry">
@@ -32,7 +35,7 @@ export function CurrentMood() {
           <Laugh className="text-yellow-300" size={30} />
         </ToggleGroupItem>
       </ToggleGroup>
-      <input type="hidden" name="mood" value={value} />
+      <input type="hidden" name="mood" value={currentMood} />
     </>
   );
 }

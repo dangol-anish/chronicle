@@ -62,3 +62,10 @@ FOR EACH ROW
 EXECUTE FUNCTION create_habit_logs_for_last_7_days();
 
 -- journal
+create table journals(
+  j_id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+  user_id uuid references auth.users not null,
+  j_text text not null,
+  currentMood text not null,
+  inserted_at timestamp with time zone default timezone('utc'::text, now()) not null
+);
