@@ -17,16 +17,21 @@ export async function addJournal({ content, currentMood }: JournalData) {
 
   console.log("Content: " + content + " CurrentMood: " + currentMood);
 
-  // // Example of inserting the journal data into the database
-  // const { error } = await supabase
-  //   .from("journals")
-  //   .insert([{ user_id: user.id, content, current_mood: currentMood }]);
+  // Example of inserting the journal data into the database
+  const { error } = await supabase.from("journals").insert([
+    {
+      user_id: user?.id,
+      current_mood: currentMood,
+      j_text: content,
+    },
+  ]);
 
-  // if (error) {
-  //   console.error("Failed to add journal:", error);
-  //   throw new Error("Failed to add journal");
-  // }
+  if (error) {
+    return {
+      error: error.message,
+    };
+  }
 
-  // // Revalidate path or redirect after successful insertion
-  // revalidatePath("/journals");
+  revalidatePath("/journals", "layout");
+  redirect("/journals");
 }
