@@ -36,6 +36,12 @@ h3 {
   padding-left: 30px;
 }
 
+@media (max-width: 640px) {
+  .tiptap {
+    height: 50vh;
+  }
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;

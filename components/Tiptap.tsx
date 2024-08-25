@@ -5,7 +5,7 @@ import Underline from "@tiptap/extension-underline";
 import StarterKit from "@tiptap/starter-kit";
 import Toolbar from "./Toolbar";
 
-const Tiptap = ({ content, onChange }: any) => {
+const Tiptap = ({ content, onChange, pending }: any) => {
   const handleChange = (newContent: string) => {
     onChange(newContent);
   };
@@ -23,8 +23,8 @@ const Tiptap = ({ content, onChange }: any) => {
   });
 
   return (
-    <div className="flex flex-col border rounded-md gap-3 p-5 w-full">
-      <Toolbar editor={editor} content={content} />
+    <div className="flex flex-col border h-[70vh] rounded-md gap-3 p-5 w-full">
+      <Toolbar pending={pending} editor={editor} content={content} />
       <EditorContent
         style={{
           height: "60vh",

@@ -49,7 +49,11 @@ export function NotePicker() {
     >
       <h2>What have you been up to?</h2>
       <CurrentMood currentMood={currentMood} setCurrentMood={setCurrentMood} />
-      <Tiptap content={content} onChange={handleContentChange} />
+      <Tiptap
+        pending={pending}
+        content={content}
+        onChange={handleContentChange}
+      />
     </form>
   );
 }
