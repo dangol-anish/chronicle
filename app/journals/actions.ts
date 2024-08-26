@@ -35,3 +35,7 @@ export async function addJournal({ content, currentMood }: JournalData) {
   revalidatePath("/journals", "layout");
   redirect("/journals");
 }
+
+export async function getJournals() {
+  const supabase = await createClient();
+}
