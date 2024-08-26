@@ -56,7 +56,9 @@ export async function getHabits() {
     .order("inserted_at", { ascending: false });
 
   if (error) {
-    throw new Error(`Error fetching habits and logs: ${error.message}`);
+    return {
+      error: error.message,
+    };
   }
 
   return habitsWithLogs;
@@ -87,9 +89,10 @@ export async function updateHabitLog(formData: FormData) {
     .eq("log_id", log_id);
 
   if (error) {
-    throw new Error(error.message);
+    return {
+      error: error.message,
+    };
   }
 
-  // Revalidate the path to reflect the changes
   revalidatePath("/todos");
 }

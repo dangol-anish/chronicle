@@ -1,13 +1,21 @@
 "use client";
+import { getJournals } from "@/app/journals/actions";
 import { Button } from "../ui/button";
+import { monthConverter } from "@/utils/getJournalDates";
+
+export interface JournalDateItemProps {
+  month: string;
+  day: string;
+  year: string;
+}
 
 export function JournalDates({
   getDates,
 }: {
-  getDates: { day: string; month: string }[];
+  getDates: { day: string; month: string; year: string }[];
 }) {
-  const getJournalData = (item: any) => {
-    console.log(item);
+  const clientAction = async (item: JournalDateItemProps) => {
+    const result = await getJournals(item);
   };
 
   return (
@@ -16,13 +24,13 @@ export function JournalDates({
         {getDates.map((item, index) => (
           <Button
             onClick={() => {
-              getJournalData(item);
+              clientAction(item);
             }}
             className="flex flex-col h-16 bg-slate-700 dark:bg-white"
             key={index}
           >
             <span className="text-xl">{item.day}</span>
-            <span>{item.month}</span>
+            <span>{monthConverter(item.month)}</span>
           </Button>
         ))}
       </div>
