@@ -54,7 +54,7 @@ export async function getJournals(item: JournalDateItemProps) {
 
   const { data, error } = await supabase
     .from("journals")
-    .select("*")
+    .select("current_mood, inserted_at, j_text")
     .eq("user_id", user?.id)
     .gte("inserted_at", startOfDay)
     .lt("inserted_at", endOfDay);
@@ -64,6 +64,8 @@ export async function getJournals(item: JournalDateItemProps) {
       error: error.message,
     };
   } else {
-    console.log(data);
+    return {
+      data,
+    };
   }
 }

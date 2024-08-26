@@ -1,7 +1,9 @@
 "use client";
+import { useState, useEffect } from "react";
 import { getJournals } from "@/app/journals/actions";
 import { Button } from "../ui/button";
 import { monthConverter } from "@/utils/getJournalDates";
+import { JournalItem } from "./JournalItem";
 
 export interface JournalDateItemProps {
   month: string;
@@ -14,8 +16,26 @@ export function JournalDates({
 }: {
   getDates: { day: string; month: string; year: string }[];
 }) {
+  const [selectedDate, setSelectedDate] = useState<JournalDateItemProps | null>(
+    getDates[0] || null
+  );
+  const [journalItem, setJournalItem] = useState<any>(null);
+
+  console.log(journalItem);
+
+  useEffect(() => {
+    if (getDates.length > 0) {
+      const initialDate = getDates[0];
+      setSelectedDate(initialDate);
+      clientAction(initialDate);
+    }
+  }, [getDates]);
+
   const clientAction = async (item: JournalDateItemProps) => {
+    setSelectedDate(item);
     const result = await getJournals(item);
+    const journalItem = result.data;
+    setJournalItem(journalItem);
   };
 
   return (
@@ -26,7 +46,14 @@ export function JournalDates({
             onClick={() => {
               clientAction(item);
             }}
-            className="flex flex-col h-16 bg-slate-700 dark:bg-white"
+            className={`flex flex-col h-16 ${
+              selectedDate &&
+              selectedDate.day === item.day &&
+              selectedDate.month === item.month &&
+              selectedDate.year === item.year
+                ? "bg-blue-500 text-white"
+                : "bg-slate-700 dark:bg-white"
+            }`}
             key={index}
           >
             <span className="text-xl">{item.day}</span>
@@ -34,6 +61,7 @@ export function JournalDates({
           </Button>
         ))}
       </div>
+      <JournalItem item={journalItem} />
     </>
   );
 }
