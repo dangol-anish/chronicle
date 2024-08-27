@@ -1,22 +1,25 @@
-export interface JournalItemData {
-  current_mood: string;
-  inserted_at: string;
-  j_text: string;
+import React from "react";
+
+// Define the interface for the props
+export interface JournalItemDataProps {
+  currentMood: string;
+  insertedAt: string;
+  journalText: string;
 }
 
-export function JournalItem({ item }: { item: JournalItemData | null }) {
-  console.log("item" + item);
+// Define the component as a regular function component
+const JournalItem = ({
+  currentMood,
+  insertedAt,
+  journalText,
+}: JournalItemDataProps) => {
   return (
-    <div>
-      {item ? (
-        <>
-          <p>Mood: {item.current_mood}</p>
-          <p>Inserted At: {item.inserted_at}</p>
-          <div dangerouslySetInnerHTML={{ __html: item.j_text }} />
-        </>
-      ) : (
-        <p>No journal entry available</p>
-      )}
+    <div className="journal-item">
+      <p>Mood: {currentMood}</p>
+      <p>Date: {new Date(insertedAt).toLocaleString()}</p>
+      <div dangerouslySetInnerHTML={{ __html: journalText }} />
     </div>
   );
-}
+};
+
+export default JournalItem;

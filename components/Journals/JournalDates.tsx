@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { getJournals } from "@/app/journals/actions";
 import { Button } from "../ui/button";
 import { monthConverter } from "@/utils/getJournalDates";
-import { JournalItem } from "./JournalItem";
+import JournalItem from "./JournalItem";
 
 export interface JournalDateItemProps {
   month: string;
@@ -21,8 +21,6 @@ export function JournalDates({
   );
   const [journalItem, setJournalItem] = useState<any>(null);
 
-  console.log(journalItem);
-
   useEffect(() => {
     if (getDates.length > 0) {
       const initialDate = getDates[0];
@@ -37,6 +35,8 @@ export function JournalDates({
     const journalItem = result.data;
     setJournalItem(journalItem);
   };
+
+  console.log(journalItem);
 
   return (
     <>
@@ -61,7 +61,16 @@ export function JournalDates({
           </Button>
         ))}
       </div>
-      <JournalItem item={journalItem} />
+      <div>
+        {journalItem.map((item: any, index: any) => (
+          <JournalItem
+            key={index}
+            currentMood={item.current_mood}
+            insertedAt={item.inserted_at}
+            journalText={item.j_text}
+          />
+        ))}
+      </div>
     </>
   );
 }
