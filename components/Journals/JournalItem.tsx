@@ -1,13 +1,11 @@
 import React from "react";
 
-// Define the interface for the props
 export interface JournalItemDataProps {
   currentMood: string;
   insertedAt: string;
   journalText: string;
 }
 
-// Define the component as a regular function component
 const JournalItem = ({
   currentMood,
   insertedAt,

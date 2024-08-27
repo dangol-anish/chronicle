@@ -19,7 +19,7 @@ export function JournalDates({
   const [selectedDate, setSelectedDate] = useState<JournalDateItemProps | null>(
     getDates[0] || null
   );
-  const [journalItem, setJournalItem] = useState<any>(null);
+  const [journalItem, setJournalItem] = useState<any[]>([]);
 
   useEffect(() => {
     if (getDates.length > 0) {
@@ -32,8 +32,8 @@ export function JournalDates({
   const clientAction = async (item: JournalDateItemProps) => {
     setSelectedDate(item);
     const result = await getJournals(item);
-    const journalItem = result.data;
-    setJournalItem(journalItem);
+    const journals = result.data;
+    setJournalItem(journals || []);
   };
 
   console.log(journalItem);
@@ -62,14 +62,18 @@ export function JournalDates({
         ))}
       </div>
       <div>
-        {journalItem.map((item: any, index: any) => (
-          <JournalItem
-            key={index}
-            currentMood={item.current_mood}
-            insertedAt={item.inserted_at}
-            journalText={item.j_text}
-          />
-        ))}
+        {journalItem.length > 0 ? (
+          journalItem.map((item: any, index: any) => (
+            <JournalItem
+              key={index}
+              currentMood={item.current_mood}
+              insertedAt={item.inserted_at}
+              journalText={item.j_text}
+            />
+          ))
+        ) : (
+          <p>No journal entries for this date.</p>
+        )}
       </div>
     </>
   );
