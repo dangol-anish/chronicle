@@ -1,12 +1,10 @@
 export function textShortener(
-  text: string | undefined,
+  text: string | undefined | null,
   length: number
 ): string | undefined {
-  if (!text) return text;
-  const words = text.split(" ");
-  if (words.length > length) {
-    return words.slice(0, length).join(" ") + "...";
+  if (!text) return text || undefined;
+  if (text.length > length) {
+    return text.slice(0, length) + "...";
   }
-
   return text;
 }

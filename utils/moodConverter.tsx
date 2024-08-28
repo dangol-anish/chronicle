@@ -6,6 +6,8 @@ export function moodConverter(mood: string) {
       return <Angry className="text-red-500" size={30} />;
     case "frown":
       return <Frown className="text-blue-500" size={30} />;
+    case "neutral":
+      return <Meh className="text-green-500" size={30} />;
     case "meh":
       return <Meh className="text-green-500" size={30} />;
     case "smile":

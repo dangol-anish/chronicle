@@ -25,7 +25,7 @@ export function CurrentMood({ currentMood, setCurrentMood }: CurrentMoodProps) {
         <ToggleGroupItem value="frown" aria-label="Toggle frown">
           <Frown className="text-blue-500" size={30} />
         </ToggleGroupItem>
-        <ToggleGroupItem value="meh" aria-label="Toggle meh">
+        <ToggleGroupItem value="neutral" aria-label="Toggle meh">
           <Meh className="text-green-500" size={30} />
         </ToggleGroupItem>
         <ToggleGroupItem value="smile" aria-label="Toggle smile">
