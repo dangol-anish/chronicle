@@ -1,3 +1,4 @@
+import { moodConverter } from "@/utils/moodConverter";
 import React from "react";
 
 export interface JournalItemDataProps {
@@ -13,7 +14,7 @@ const JournalItem = ({
 }: JournalItemDataProps) => {
   return (
     <div className="journal-item">
-      <p>Mood: {currentMood}</p>
+      <p>{moodConverter(currentMood)}</p>
       <p>Date: {new Date(insertedAt).toLocaleString()}</p>
       <div dangerouslySetInnerHTML={{ __html: journalText }} />
     </div>
