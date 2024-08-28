@@ -36,8 +36,6 @@ export function JournalDates({
     setJournalItem(journals || []);
   };
 
-  console.log(journalItem);
-
   return (
     <>
       <div className="flex overflow-x-auto scrollbar-hide gap-5">

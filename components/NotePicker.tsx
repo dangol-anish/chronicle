@@ -17,38 +17,31 @@ export function NotePicker() {
   };
 
   async function clientAction(content: string, currentMood: string) {
-    try {
-      setPending(true);
+    setPending(true);
 
-      if (!content) {
-        toast({
-          variant: "destructive",
-          description: "Content cannot be empty",
-        });
-        setPending(false);
-        return;
-      }
-
-      const result = await addJournal({ content, currentMood });
-
-      console.log(result);
+    if (!content) {
+      toast({
+        variant: "destructive",
+        description: "Content cannot be empty",
+      });
       setPending(false);
-
-      if (result?.error) {
-        toast({
-          variant: "destructive",
-          description: result.error,
-        });
-        return;
-      }
-
-      await wait();
-
-      // Display success toast or other UI feedback
-    } catch (error) {
-      console.error("Failed to add journal:", error);
-      // Display error toast or other UI feedback
+      return;
     }
+
+    const result = await addJournal({ content, currentMood });
+
+    console.log(result);
+    setPending(false);
+
+    if (result?.error) {
+      toast({
+        variant: "destructive",
+        description: result.error,
+      });
+      return;
+    }
+
+    await wait();
   }
   return (
     <form

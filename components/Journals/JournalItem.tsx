@@ -19,8 +19,6 @@ const JournalItem = ({
   const safeText = plainText ?? undefined;
   const shortenedText = textShortener(safeText, 10);
 
-  console.log("Shortened Text:", shortenedText); // Add this line to debug
-
   return (
     <div className="flex flex-col gap-1">
       <p className="text-slate-600 text-sm">{formatCurrentDay(insertedAt)}</p>
