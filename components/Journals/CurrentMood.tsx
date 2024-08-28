@@ -32,7 +32,7 @@ export function CurrentMood({ currentMood, setCurrentMood }: CurrentMoodProps) {
           <Smile className="text-yellow-500" size={30} />
         </ToggleGroupItem>
         <ToggleGroupItem value="laugh" aria-label="Toggle laugh">
-          <Laugh className="text-yellow-300" size={30} />
+          <Laugh className="text-yellow-600" size={30} />
         </ToggleGroupItem>
       </ToggleGroup>
       <input type="hidden" name="mood" value={currentMood} />

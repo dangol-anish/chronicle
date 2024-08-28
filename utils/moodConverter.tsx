@@ -13,7 +13,7 @@ export function moodConverter(mood: string) {
     case "smile":
       return <Smile className="text-yellow-500" size={30} />;
     case "laugh":
-      return <Laugh className="text-yellow-300" size={30} />;
+      return <Laugh className="text-yellow-600" size={30} />;
     default:
       return "Invalid Mood";
   }

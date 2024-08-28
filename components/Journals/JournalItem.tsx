@@ -21,8 +21,10 @@ const JournalItem = ({
 
   return (
     <div className="flex flex-col gap-1">
-      <p className="text-slate-600 text-sm">{formatCurrentDay(insertedAt)}</p>
-      <div className="flex border rounded-md p-3 bg-slate-200 items-center gap-5">
+      <p className="text-slate-600 dark:text-white text-sm">
+        {formatCurrentDay(insertedAt)}
+      </p>
+      <div className="flex border rounded-md p-3 bg-slate-200 dark:text-slate-900 items-center gap-5">
         <p>{moodConverter(currentMood)}</p>
         <div>
           <p className="font-bold text-lg">

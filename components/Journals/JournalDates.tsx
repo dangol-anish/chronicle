@@ -38,40 +38,42 @@ export function JournalDates({
 
   return (
     <>
-      <div className="flex overflow-x-auto scrollbar-hide gap-5">
-        {getDates.map((item, index) => (
-          <Button
-            onClick={() => {
-              clientAction(item);
-            }}
-            className={`flex flex-col h-16 ${
-              selectedDate &&
-              selectedDate.day === item.day &&
-              selectedDate.month === item.month &&
-              selectedDate.year === item.year
-                ? "bg-blue-500 text-white"
-                : "bg-slate-700 dark:bg-white"
-            }`}
-            key={index}
-          >
-            <span className="text-xl">{item.day}</span>
-            <span>{monthConverter(item.month)}</span>
-          </Button>
-        ))}
-      </div>
-      <div className=" flex  flex-col gap-5 h-[70vh] overflow-y-auto">
-        {journalItem.length > 0 ? (
-          journalItem.map((item: any, index: any) => (
-            <JournalItem
+      <div className="flex  flex-col gap-5 md:flex-row w-full">
+        <div className="flex md:w-[30%] md:flex-col  overflow-x-auto scrollbar-hide gap-5">
+          {getDates.map((item, index) => (
+            <Button
+              onClick={() => {
+                clientAction(item);
+              }}
+              className={`flex flex-col h-16 ${
+                selectedDate &&
+                selectedDate.day === item.day &&
+                selectedDate.month === item.month &&
+                selectedDate.year === item.year
+                  ? "bg-blue-500 text-white"
+                  : "bg-slate-700 dark:bg-white"
+              }`}
               key={index}
-              currentMood={item.current_mood}
-              insertedAt={item.inserted_at}
-              journalText={item.j_text}
-            />
-          ))
-        ) : (
-          <p>No journal entries for this date.</p>
-        )}
+            >
+              <span className="text-xl">{item.day}</span>
+              <span>{monthConverter(item.month)}</span>
+            </Button>
+          ))}
+        </div>
+        <div className=" flex md:w-[70%]  flex-col gap-5 h-[79vh] overflow-y-auto">
+          {journalItem.length > 0 ? (
+            journalItem.map((item: any, index: any) => (
+              <JournalItem
+                key={index}
+                currentMood={item.current_mood}
+                insertedAt={item.inserted_at}
+                journalText={item.j_text}
+              />
+            ))
+          ) : (
+            <p>No journal entries for this date.</p>
+          )}
+        </div>
       </div>
     </>
   );
