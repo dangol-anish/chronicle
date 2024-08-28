@@ -61,7 +61,7 @@ export function JournalDates({
           </Button>
         ))}
       </div>
-      <div>
+      <div className=" flex  flex-col gap-5 h-[70vh] overflow-y-auto">
         {journalItem.length > 0 ? (
           journalItem.map((item: any, index: any) => (
             <JournalItem

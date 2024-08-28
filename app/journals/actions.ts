@@ -57,7 +57,8 @@ export async function getJournals(item: JournalDateItemProps) {
     .select("current_mood, inserted_at, j_text")
     .eq("user_id", user?.id)
     .gte("inserted_at", startOfDay)
-    .lt("inserted_at", endOfDay);
+    .lt("inserted_at", endOfDay)
+    .order("inserted_at", { ascending: false });
 
   if (error) {
     return {

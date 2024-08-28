@@ -1,4 +1,6 @@
+import { formatCurrentDay } from "@/utils/dateFormatter";
 import { moodConverter } from "@/utils/moodConverter";
+import { plainTextConverter } from "@/utils/plainTextConverter";
 import React from "react";
 
 export interface JournalItemDataProps {
@@ -13,10 +15,15 @@ const JournalItem = ({
   journalText,
 }: JournalItemDataProps) => {
   return (
-    <div className="journal-item">
-      <p>{moodConverter(currentMood)}</p>
-      <p>Date: {new Date(insertedAt).toLocaleString()}</p>
-      <div dangerouslySetInnerHTML={{ __html: journalText }} />
+    <div className="flex flex-col gap-1">
+      <p className="text-slate-600 text-sm">{formatCurrentDay(insertedAt)}</p>
+      <div className="flex border rounded-md p-3 bg-slate-200">
+        <p>{moodConverter(currentMood)}</p>
+        <div>
+          <p>{currentMood[0].toUpperCase() + currentMood.substring(1)}</p>
+          <p>{plainTextConverter(journalText)}</p>
+        </div>
+      </div>
     </div>
   );
 };
