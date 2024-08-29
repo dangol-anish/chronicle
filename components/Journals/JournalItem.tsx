@@ -20,11 +20,11 @@ const JournalItem = ({
   const shortenedText = textShortener(safeText, 10);
 
   return (
-    <div className="flex flex-col gap-1">
-      <p className="text-slate-600 dark:text-white text-sm">
+    <div className="flex flex-col  md:flex-row md:bg-slate-200 md:dark:text-slate-900 rounded-md md:w-[30%] md:h-[300px] ">
+      <p className="text-slate-600 dark:text-white text-sm md:py-3">
         {formatCurrentDay(insertedAt)}
       </p>
-      <div className="flex border rounded-md p-3 bg-slate-200 dark:text-slate-900 items-center gap-5">
+      <div className="flex p-3 border rounded-md md:border-none  items-center gap-5 bg-slate-200 dark:text-slate-900">
         <p>{moodConverter(currentMood)}</p>
         <div>
           <p className="font-bold text-lg">
