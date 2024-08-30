@@ -1,5 +1,6 @@
 "use client";
 
+import { formatDate, formatDateTime } from "@/utils/dateFormatter";
 import { useSearchParams } from "next/navigation";
 
 export default function Page() {
@@ -13,5 +14,12 @@ export default function Page() {
     insertedAt,
     journalText,
   });
-  return <></>;
+  return (
+    <>
+      <main>
+        <div>{formatDateTime(insertedAt)}</div>
+        <div></div>
+      </main>
+    </>
+  );
 }

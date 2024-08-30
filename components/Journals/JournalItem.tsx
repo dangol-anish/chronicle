@@ -33,7 +33,7 @@ const JournalItem = ({
           jT: safeText,
         },
       }}
-      className="md:p-5 flex flex-col md:bg-slate-200 md:dark:text-slate-900 rounded-lg md:w-[30%] md:h-[250px] hover:bg-slate-300"
+      className="md:p-5 flex flex-col md:bg-slate-200 md:dark:text-slate-900 rounded-lg md:w-[30%] md:h-[250px] hover:bg-slate-300 "
     >
       <div className="hidden md:flex items-center justify-between">
         <div className="flex gap-2 items-center">
