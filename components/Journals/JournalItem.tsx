@@ -2,26 +2,39 @@ import { formatCurrentDay } from "@/utils/dateFormatter";
 import { moodConverter } from "@/utils/moodConverter";
 import { plainTextConverter } from "@/utils/plainTextConverter";
 import { textShortener } from "@/utils/textShortener";
+import Link from "next/link";
 import React from "react";
 
 export interface JournalItemDataProps {
   currentMood: string;
   insertedAt: string;
   journalText: string;
+  journalId: string;
 }
 
 const JournalItem = ({
   currentMood,
   insertedAt,
   journalText,
+  journalId,
 }: JournalItemDataProps) => {
   const plainText = plainTextConverter(journalText);
   const safeText = plainText ?? undefined;
   const shortenedTextSM = textShortener(safeText, 30);
-  const shortenedTextLG = textShortener(safeText, 180);
+  const shortenedTextLG = textShortener(safeText, 120);
 
   return (
-    <div className="md:p-3 flex flex-col md:bg-slate-200 md:dark:text-slate-900 rounded-md md:w-[30%] md:h-[300px]">
+    <Link
+      href={{
+        pathname: `/journals/${journalId}`,
+        query: {
+          cM: currentMood,
+          iA: insertedAt,
+          jT: safeText,
+        },
+      }}
+      className="md:p-5 flex flex-col md:bg-slate-200 md:dark:text-slate-900 rounded-lg md:w-[30%] md:h-[250px] hover:bg-slate-300"
+    >
       <div className="hidden md:flex items-center justify-between">
         <div className="flex gap-2 items-center">
           <p className="hidden md:flex">{moodConverter(currentMood)}</p>
@@ -48,7 +61,7 @@ const JournalItem = ({
           <p>{shortenedTextSM}</p>
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 

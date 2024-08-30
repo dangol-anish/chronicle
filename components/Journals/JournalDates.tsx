@@ -4,6 +4,7 @@ import { getJournals } from "@/app/journals/actions";
 import { Button } from "../ui/button";
 import { monthConverter } from "@/utils/getJournalDates";
 import JournalItem from "./JournalItem";
+import Link from "next/link";
 
 export interface JournalDateItemProps {
   month: string;
@@ -68,6 +69,7 @@ export function JournalDates({
                 currentMood={item.current_mood}
                 insertedAt={item.inserted_at}
                 journalText={item.j_text}
+                journalId={item.j_id}
               />
             ))
           ) : (

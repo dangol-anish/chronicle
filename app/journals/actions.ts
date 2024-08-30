@@ -18,7 +18,6 @@ export async function addJournal({ content, currentMood }: JournalData) {
 
   console.log("Content: " + content + " CurrentMood: " + currentMood);
 
-  // Example of inserting the journal data into the database
   const { error } = await supabase.from("journals").insert([
     {
       user_id: user?.id,
@@ -54,7 +53,7 @@ export async function getJournals(item: JournalDateItemProps) {
 
   const { data, error } = await supabase
     .from("journals")
-    .select("current_mood, inserted_at, j_text")
+    .select("current_mood, inserted_at, j_text, j_id")
     .eq("user_id", user?.id)
     .gte("inserted_at", startOfDay)
     .lt("inserted_at", endOfDay)
