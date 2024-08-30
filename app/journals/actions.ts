@@ -69,3 +69,27 @@ export async function getJournals(item: JournalDateItemProps) {
     };
   }
 }
+
+export async function deleteJournal(journal_id: number) {
+  const supabase = createClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  if (!user) {
+    throw new Error("User is not logged in");
+  }
+
+  const { error } = await supabase.from("journals").delete().match({
+    user_id: user.id,
+    j_id: journal_id,
+  });
+
+  if (error) {
+    return {
+      error: error.message,
+    };
+  }
+  revalidatePath("/journals");
+  redirect("/journals");
+}

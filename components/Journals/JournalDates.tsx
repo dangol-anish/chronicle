@@ -39,7 +39,7 @@ export function JournalDates({
   return (
     <>
       <div className="flex  flex-col  gap-5 md:flex-row w-full">
-        <div className="flex md:w-[10%] md:flex-col  overflow-x-auto scrollbar-hide gap-5">
+        <div className="flex md:w-[10%] md:flex-col  overflow-x-auto scrollbar-hide gap-5 md:justify-center">
           {getDates.map((item, index) => (
             <Button
               onClick={() => {
@@ -60,7 +60,7 @@ export function JournalDates({
             </Button>
           ))}
         </div>
-        <div className="flex md:justify-center  md:w-[100%] flex-col md:flex-row gap-5 h-[79vh] overflow-y-auto md:flex-wrap scrollbar-hide">
+        <div className="flex md:justify-center md:w-[100%] flex-col md:flex-row gap-5 h-[79vh] overflow-y-auto md:flex-wrap scrollbar-hide">
           {journalItem.length > 0 ? (
             journalItem.map((item: any, index: any) => (
               <JournalItem
