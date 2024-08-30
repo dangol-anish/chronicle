@@ -4,7 +4,6 @@ import { getJournals } from "@/app/journals/actions";
 import { Button } from "../ui/button";
 import { monthConverter } from "@/utils/getJournalDates";
 import JournalItem from "./JournalItem";
-import Link from "next/link";
 
 export interface JournalDateItemProps {
   month: string;
@@ -61,7 +60,7 @@ export function JournalDates({
             </Button>
           ))}
         </div>
-        <div className="flex md:justify-center md:w-[100%] flex-col md:flex-row gap-5 h-[79vh] overflow-y-auto md:flex-wrap scrollbar-hide">
+        <div className="flex md:justify-center  md:w-[100%] flex-col md:flex-row gap-5 h-[79vh] overflow-y-auto md:flex-wrap scrollbar-hide">
           {journalItem.length > 0 ? (
             journalItem.map((item: any, index: any) => (
               <JournalItem
