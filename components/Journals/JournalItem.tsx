@@ -24,7 +24,7 @@ const JournalItem = ({
       <p className="text-slate-600 dark:text-white text-sm md:py-3">
         {formatCurrentDay(insertedAt)}
       </p>
-      <div className="flex p-3 border rounded-md md:border-none  items-center gap-5 bg-slate-200 dark:text-slate-900">
+      <div className="flex p-3 border rounded-md md:border-none  md:items-center gap-5 bg-slate-200 dark:text-slate-900">
         <p>{moodConverter(currentMood)}</p>
         <div>
           <p className="font-bold text-lg">
