@@ -46,13 +46,13 @@ const JournalItem = ({
           {formatCurrentDay(insertedAt)}
         </p>
       </div>
-      <div className="hidden md:flex w-full h-full md:py-3 break-words overflow-wrap">
+      <div className="hidden md:flex h-full md:py-3 break-words overflow-hidden md:w-full ">
         {shortenedTextLG}
       </div>
       <p className="text-slate-600 md:text-end text-sm md:hidden">
         {formatCurrentDay(insertedAt)}
       </p>
-      <div className="flex p-3 border items-center rounded-md md:border-none md:items-center gap-5 bg-slate-200 dark:text-slate-900 md:hidden">
+      <div className="flex p-3 border items-center rounded-md md:border-none md:items-center gap-5 bg-slate-200 dark:text-slate-900 md:hidden ">
         <p>{moodConverter(currentMood)}</p>
         <div>
           <p className="font-bold text-lg">

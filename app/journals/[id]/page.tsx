@@ -12,10 +12,11 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import { moodConverter } from "@/utils/moodConverter";
 
 export default function Page() {
   const searchParams = useSearchParams();
-  const currentMood = searchParams.get("cM");
+  const currentMood = searchParams.get("cM") as string;
   const insertedAt = searchParams.get("iA");
   const journalText = searchParams.get("jT") || "";
 
@@ -26,9 +27,11 @@ export default function Page() {
   });
   return (
     <>
-      <main className="max-w-screen h-full overflow-x-auto">
-        <div className="flex justify-between">
+      <main className="h-[90vh] w-full overflow-x-auto flex flex-col gap-10">
+        <div className="flex justify-between items-center">
           <p>{formatDateTime(insertedAt)}</p>
+
+          <div className="flex items-center">{moodConverter(currentMood)}</div>
           <div className="flex gap-5">
             <Button>Edit</Button>
 
@@ -51,10 +54,9 @@ export default function Page() {
             </Dialog>
           </div>
         </div>
-        <div className="overflow-x-auto">
-          <div className="max-w-[500px] mx-auto">
-            <div dangerouslySetInnerHTML={{ __html: journalText }} />
-          </div>
+
+        <div className="border p-5 rounded-md h-full w-full overflow-x-hidden">
+          <div dangerouslySetInnerHTML={{ __html: journalText }}></div>
         </div>
       </main>
     </>
