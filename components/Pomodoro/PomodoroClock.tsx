@@ -22,8 +22,8 @@ import { Label } from "@/components/ui/label";
 import { useToast } from "../ui/use-toast";
 
 export function PomodoroClock() {
-  const defaultWorkTime = 5; // default work time in minutes
-  const defaultBreakTime = 6; // default break time in minutes
+  const defaultWorkTime = 25; // default work time in minutes
+  const defaultBreakTime = 5; // default break time in minutes
 
   const [workTime, setWorkTime] = useState<number>(defaultWorkTime * 60); // default work time in seconds
   const [breakTime, setBreakTime] = useState<number>(defaultBreakTime * 60); // default break time in seconds
@@ -32,8 +32,13 @@ export function PomodoroClock() {
   const [isActive, setIsActive] = useState<boolean>(false);
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
   const { toast } = useToast();
+  const audioRef = useRef<HTMLAudioElement | null>(null);
 
   useEffect(() => {
+    if (audioRef.current === null) {
+      audioRef.current = new Audio("/oven-sound.wav"); // Path to your audio file
+    }
+
     if (isActive && time > 0) {
       intervalRef.current = setInterval(() => {
         setTime((prevTime) => prevTime - 1);
@@ -47,6 +52,7 @@ export function PomodoroClock() {
         setTime(workTime);
       }
       setIsActive(false); // Stop the timer after switching modes
+      audioRef.current.play(); // Play the oven sound
     }
 
     return () => clearInterval(intervalRef.current!);
@@ -109,7 +115,7 @@ export function PomodoroClock() {
                 }
               }}
             >
-              Work Time
+              Work
             </Button>
             <Button
               variant={currentMode === "break" ? "default" : "outline"}
@@ -121,7 +127,7 @@ export function PomodoroClock() {
                 }
               }}
             >
-              Break Time
+              Break
             </Button>
           </div>
         </div>
