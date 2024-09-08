@@ -22,6 +22,7 @@ import { Label } from "@/components/ui/label";
 import { useToast } from "../ui/use-toast";
 
 export function PomodoroClock() {
+  const [open, setOpen] = useState(false);
   const defaultWorkTime = 25; // default work time in minutes
   const defaultBreakTime = 5; // default break time in minutes
 
@@ -34,12 +35,15 @@ export function PomodoroClock() {
   const { toast } = useToast();
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
+  const [tempWorkTime, setTempWorkTime] = useState<number>(defaultWorkTime);
+  const [tempBreakTime, setTempBreakTime] = useState<number>(defaultBreakTime);
+
   useEffect(() => {
     if (audioRef.current === null) {
-      audioRef.current = new Audio("/oven-sound.wav"); // Path to your audio file
+      audioRef.current = new Audio("/oven-sound.wav");
     }
 
-    if (isActive && time > 0) {
+    if (isActive && time > 0 && !intervalRef.current) {
       intervalRef.current = setInterval(() => {
         setTime((prevTime) => prevTime - 1);
       }, 1000);
@@ -55,30 +59,48 @@ export function PomodoroClock() {
       audioRef.current.play(); // Play the oven sound
     }
 
-    return () => clearInterval(intervalRef.current!);
+    return () => {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+        intervalRef.current = null;
+      }
+    };
   }, [isActive, time, currentMode, breakTime, workTime]);
 
   const resetTimer = () => {
-    clearInterval(intervalRef.current!);
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current);
+      intervalRef.current = null;
+    }
     setIsActive(false);
     setTime(currentMode === "work" ? workTime : breakTime);
   };
 
-  const handleSetTime = (newWorkTime: number, newBreakTime: number) => {
-    if (newWorkTime > 60 || newBreakTime > 60) {
+  const handleSaveTime = () => {
+    if (tempWorkTime > 60 || tempBreakTime > 60) {
       toast({
-        description: "Work and break times cannot exceed 60 minutes",
+        description: "Work or break times cannot exceed 60 minutes",
         title: "Error",
         variant: "destructive",
       });
       return;
     }
 
-    const workTimeInSeconds = newWorkTime * 60;
-    const breakTimeInSeconds = newBreakTime * 60;
+    if (tempWorkTime < 1 || tempBreakTime < 1) {
+      toast({
+        description: "Invalid work or break time",
+        title: "Error",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    const workTimeInSeconds = tempWorkTime * 60;
+    const breakTimeInSeconds = tempBreakTime * 60;
 
     setWorkTime(workTimeInSeconds);
     setBreakTime(breakTimeInSeconds);
+    setOpen(false);
 
     if (currentMode === "work") {
       setTime(workTimeInSeconds);
@@ -140,7 +162,7 @@ export function PomodoroClock() {
       <CardFooter className="flex justify-center gap-6">
         <Button onClick={resetTimer}>Reset</Button>
 
-        <Dialog>
+        <Dialog open={open} onOpenChange={setOpen}>
           <DialogTrigger asChild>
             <Button variant="outline">Set Time</Button>
           </DialogTrigger>
@@ -156,11 +178,9 @@ export function PomodoroClock() {
                 <Input
                   id="work-time"
                   type="number"
-                  defaultValue={defaultWorkTime}
+                  defaultValue={tempWorkTime}
                   className="col-span-3"
-                  onChange={(e) =>
-                    handleSetTime(Number(e.target.value), breakTime / 60)
-                  }
+                  onChange={(e) => setTempWorkTime(Number(e.target.value))}
                 />
               </div>
               <div className="grid grid-cols-4 items-center gap-4">
@@ -170,17 +190,18 @@ export function PomodoroClock() {
                 <Input
                   id="break-time"
                   type="number"
-                  defaultValue={defaultBreakTime}
+                  defaultValue={tempBreakTime}
                   className="col-span-3"
-                  onChange={(e) =>
-                    handleSetTime(workTime / 60, Number(e.target.value))
-                  }
+                  onChange={(e) => setTempBreakTime(Number(e.target.value))}
                 />
               </div>
             </div>
             <DialogFooter>
+              <Button type="submit" onClick={handleSaveTime}>
+                Save
+              </Button>
               <DialogClose asChild>
-                <Button type="submit">Save</Button>
+                <Button variant="outline">Cancel</Button>
               </DialogClose>
             </DialogFooter>
           </DialogContent>
