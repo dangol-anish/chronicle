@@ -119,98 +119,100 @@ export function PomodoroClock() {
   };
 
   return (
-    <Card className="w-[500px] h-[500px] flex flex-col">
+    <Card className="lg:w-[49%] h-full flex flex-col lg:gap-8 p-5">
+      <CardTitle className="flex gap-2 items-center justify-center text-3xl">
+        Pomodoro Timer
+      </CardTitle>
       {/* header */}
-      <CardHeader>
-        <div className="flex flex-col justify-center w-full items-center gap-6">
-          <CardTitle className="flex gap-2 items-center">
-            <p>Timer</p>
-          </CardTitle>
-          <div className="flex justify-center gap-6">
-            <Button
-              variant={currentMode === "work" ? "default" : "outline"}
-              onClick={() => {
-                if (currentMode !== "work") {
-                  setCurrentMode("work");
-                  setIsActive(false); // Stop the timer when switching modes
-                  setTime(workTime);
-                }
-              }}
-            >
-              Work
-            </Button>
-            <Button
-              variant={currentMode === "break" ? "default" : "outline"}
-              onClick={() => {
-                if (currentMode !== "break") {
-                  setCurrentMode("break");
-                  setIsActive(false); // Stop the timer when switching modes
-                  setTime(breakTime);
-                }
-              }}
-            >
-              Break
-            </Button>
-          </div>
-        </div>
-      </CardHeader>
-      {/* clock */}
-      <CardContent className="flex-grow flex flex-col gap-10 justify-center items-center text-9xl">
-        <p>{formatTime(time)}</p>
-      </CardContent>
-      {/* footer */}
-      <CardFooter className="flex justify-center gap-6">
-        <Button onClick={resetTimer}>Reset</Button>
-
-        <Dialog open={open} onOpenChange={setOpen}>
-          <DialogTrigger asChild>
-            <Button variant="outline">Set Time</Button>
-          </DialogTrigger>
-          <DialogContent className="sm:max-w-[425px]">
-            <DialogHeader>
-              <DialogTitle>Set New Time</DialogTitle>
-            </DialogHeader>
-            <div className="grid gap-4 py-4">
-              <div className="grid grid-cols-4 items-center gap-4">
-                <Label htmlFor="work-time" className="text-right">
-                  Work Time
-                </Label>
-                <Input
-                  id="work-time"
-                  type="number"
-                  defaultValue={tempWorkTime}
-                  className="col-span-3"
-                  onChange={(e) => setTempWorkTime(Number(e.target.value))}
-                />
-              </div>
-              <div className="grid grid-cols-4 items-center gap-4">
-                <Label htmlFor="break-time" className="text-right">
-                  Break Time
-                </Label>
-                <Input
-                  id="break-time"
-                  type="number"
-                  defaultValue={tempBreakTime}
-                  className="col-span-3"
-                  onChange={(e) => setTempBreakTime(Number(e.target.value))}
-                />
-              </div>
-            </div>
-            <DialogFooter>
-              <Button type="submit" onClick={handleSaveTime}>
-                Save
+      <div className="flex flex-col items-center justify-start h-full pt-10 gap-6">
+        <CardHeader>
+          <div className="flex flex-col justify-center w-full items-center gap-6">
+            <div className="flex justify-center gap-6">
+              <Button
+                variant={currentMode === "work" ? "default" : "outline"}
+                onClick={() => {
+                  if (currentMode !== "work") {
+                    setCurrentMode("work");
+                    setIsActive(false); // Stop the timer when switching modes
+                    setTime(workTime);
+                  }
+                }}
+              >
+                Work
               </Button>
-              <DialogClose asChild>
-                <Button variant="outline">Cancel</Button>
-              </DialogClose>
-            </DialogFooter>
-          </DialogContent>
-        </Dialog>
+              <Button
+                variant={currentMode === "break" ? "default" : "outline"}
+                onClick={() => {
+                  if (currentMode !== "break") {
+                    setCurrentMode("break");
+                    setIsActive(false); // Stop the timer when switching modes
+                    setTime(breakTime);
+                  }
+                }}
+              >
+                Break
+              </Button>
+            </div>
+          </div>
+        </CardHeader>
+        {/* clock */}
+        <CardContent className=" flex flex-col gap-10 justify-center items-center text-8xl">
+          <p>{formatTime(time)}</p>
+        </CardContent>
+        {/* footer */}
+        <CardFooter className="flex justify-center gap-6">
+          <Button onClick={resetTimer}>Reset</Button>
 
-        <Button onClick={() => setIsActive(!isActive)}>
-          {isActive ? "Pause" : "Start"}
-        </Button>
-      </CardFooter>
+          <Dialog open={open} onOpenChange={setOpen}>
+            <DialogTrigger asChild>
+              <Button variant="outline">Set Time</Button>
+            </DialogTrigger>
+            <DialogContent className="sm:max-w-[425px]">
+              <DialogHeader>
+                <DialogTitle>Set New Time</DialogTitle>
+              </DialogHeader>
+              <div className="grid gap-4 py-4">
+                <div className="grid grid-cols-4 items-center gap-4">
+                  <Label htmlFor="work-time" className="text-right">
+                    Work Time
+                  </Label>
+                  <Input
+                    id="work-time"
+                    type="number"
+                    defaultValue={tempWorkTime}
+                    className="col-span-3"
+                    onChange={(e) => setTempWorkTime(Number(e.target.value))}
+                  />
+                </div>
+                <div className="grid grid-cols-4 items-center gap-4">
+                  <Label htmlFor="break-time" className="text-right">
+                    Break Time
+                  </Label>
+                  <Input
+                    id="break-time"
+                    type="number"
+                    defaultValue={tempBreakTime}
+                    className="col-span-3"
+                    onChange={(e) => setTempBreakTime(Number(e.target.value))}
+                  />
+                </div>
+              </div>
+              <DialogFooter>
+                <Button type="submit" onClick={handleSaveTime}>
+                  Save
+                </Button>
+                <DialogClose asChild>
+                  <Button variant="outline">Cancel</Button>
+                </DialogClose>
+              </DialogFooter>
+            </DialogContent>
+          </Dialog>
+
+          <Button onClick={() => setIsActive(!isActive)}>
+            {isActive ? "Pause" : "Start"}
+          </Button>
+        </CardFooter>
+      </div>
     </Card>
   );
 }
