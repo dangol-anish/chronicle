@@ -124,10 +124,10 @@ export function PomodoroClock() {
         Pomodoro Timer
       </CardTitle>
       {/* header */}
-      <div className="flex flex-col items-center justify-start h-full pt-10 gap-6">
+      <div className="flex flex-col items-center justify-between h-full gap-10">
         <CardHeader>
           <div className="flex flex-col justify-center w-full items-center gap-6">
-            <div className="flex justify-center gap-6">
+            <div className="flex  gap-6">
               <Button
                 variant={currentMode === "work" ? "default" : "outline"}
                 onClick={() => {
@@ -156,8 +156,8 @@ export function PomodoroClock() {
           </div>
         </CardHeader>
         {/* clock */}
-        <CardContent className=" flex flex-col gap-10 justify-center items-center text-8xl">
-          <p>{formatTime(time)}</p>
+        <CardContent className="lg:text-[160px] text-8xl">
+          {formatTime(time)}
         </CardContent>
         {/* footer */}
         <CardFooter className="flex justify-center gap-6">
