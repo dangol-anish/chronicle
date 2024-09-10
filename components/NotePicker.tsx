@@ -45,7 +45,7 @@ export function NotePicker() {
   }
   return (
     <form
-      className="flex items-center flex-col w-full h-screen gap-3"
+      className="flex items-center flex-col w-full gap-3"
       onSubmit={async (e) => {
         e.preventDefault();
         await clientAction(content, currentMood);

@@ -3,11 +3,11 @@ import { Card, CardTitle } from "../ui/card";
 export default function TodoList() {
   return (
     <>
-      <Card className="lg:w-[49%] h-[500px] lg:h-full  flex flex-col lg:gap-8 p-5 ">
+      <Card className="lg:w-[49%] w-[95%] lg:h-full flex flex-col lg:gap-8 p-5 ">
         <CardTitle className="flex gap-2 items-center justify-center text-3xl">
           Tasks
         </CardTitle>
-        <p className="h-[90%] overflow-y-auto">
+        <p className="h-[500px] lg:h-[90%] overflow-y-auto scrollbar-hide ">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius dolor
           veritatis quo, sit labore quam tenetur quod? Impedit eum nulla ex quo
           libero obcaecati aliquam dolor odit a ipsam consectetur quod ut
