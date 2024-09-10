@@ -6,7 +6,7 @@ export default function PomodoroPage() {
   return (
     <>
       {/* <PomodoroHeader /> */}
-      <div className="flex  flex-col justify-center items-center  overflow-auto lg:h-full lg:flex-row lg:justify-between gap-6 ">
+      <div className="lg:w-[80%] w-full flex flex-col items-center justify-center gap-5 ">
         <PomodoroClock />
         <TodoList />
       </div>

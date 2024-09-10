@@ -13,11 +13,12 @@ import { Label } from "@/components/ui/label";
 import { BadgePlus, Pencil, Trash2 } from "lucide-react";
 import { Textarea } from "@/components/ui/textarea";
 import { textShortener } from "@/utils/textShortener";
+import { Checkbox } from "../ui/checkbox";
 
 export default function TodoList() {
   return (
     <>
-      <Card className="lg:w-[49%] w-[95%] h-[500px] lg:h-full flex flex-col lg:gap-8 p-5 mb-5 lg:mb-0 gap-5">
+      <Card className="w-[95%] h-[400px] p-3 flex flex-col gap-5  ">
         <CardTitle className="flex gap-2 items-center justify-center text-3xl">
           Tasks
         </CardTitle>
@@ -49,25 +50,40 @@ export default function TodoList() {
 
           <div className="flex flex-col gap-5">
             <div className="border px-4 py-2 rounded-md text-md flex justify-between items-center">
-              <p className="md:hidden">
-                {textShortener("HelloHelloHelloHelloHelloHelloHelloHello", 15)}
-              </p>
-              <p className="hidden md:block lg:hidden">
-                {textShortener("HelloHelloHelloHelloHelloHelloHello", 50)}
-              </p>
-              <p className="hidden lg:block">
-                {textShortener(
-                  "HelloHelloHelloHelloHelloHelloHelloHellHelloHelloHelloHellolloHelloHelloHelloHellolloHelloHelloHelloHellolloHelloHelloHelloHellolloHelloHelloHelloHellolloHelloHelloHelloHellolloHelloHelloHelloHello",
-                  60
-                )}
-              </p>
+              <div className="flex items-center gap-2">
+                <Checkbox />
+                <div>
+                  <p className="md:hidden">
+                    {textShortener(
+                      "HelloHelloHelloHelloHelloHelloHelloHello",
+                      15
+                    )}
+                  </p>
+                  <p className="hidden md:block ">
+                    {textShortener(
+                      "HelloHelloHelloHelloHelloHelloHellooHelloHelloHelloHelloHellooHelloHelloHelloHelloHello",
+                      45
+                    )}
+                  </p>
+                </div>
+              </div>
+
               <div className="flex gap-2">
                 <Button className="p-[10px]" variant="ghost">
                   <Pencil size={20} />
                 </Button>
-                <Button className="p-[10px]" variant="ghost">
-                  <Trash2 />
-                </Button>
+                <Dialog>
+                  <DialogTrigger asChild>
+                    <Button className="p-[10px]" variant="ghost">
+                      {" "}
+                      <Trash2 />
+                    </Button>
+                  </DialogTrigger>
+                  <DialogContent className="sm:max-w-[425px]">
+                    <p>Are you sure you want to delete this task?</p>
+                    <Button variant="destructive">Delete</Button>
+                  </DialogContent>
+                </Dialog>
               </div>
             </div>
           </div>

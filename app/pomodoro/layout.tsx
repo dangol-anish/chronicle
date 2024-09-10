@@ -1,4 +1,3 @@
-import { HabitsHeader } from "@/components/Habits/HabitsHeader";
 import { ReactNode } from "react";
 
 type PomodoroLayoutProps = {
@@ -7,7 +6,7 @@ type PomodoroLayoutProps = {
 
 const PomodoroLayout = ({ children }: PomodoroLayoutProps) => {
   return (
-    <main className=" lg:h-screen lg:overflow-hidden p-5 lg:py-6 lg:px-8 flex flex-col gap-6  overflow-y-auto lg:overflow-y-hidden">
+    <main className="w-full h-screen p-5 lg:py-6 lg:px-8 flex flex-col justify-center items-center gap-6 overflow-y-auto">
       {children}
     </main>
   );
