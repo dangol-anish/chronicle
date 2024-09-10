@@ -69,3 +69,11 @@ create table journals(
   currentMood text not null,
   inserted_at timestamp with time zone default timezone('utc'::text, now()) not null
 );
+
+CREATE TABLE tasks (
+  t_id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+  user_id UUID REFERENCES auth.users (id) NOT NULL,
+  t_task TEXT NOT NULL,
+  is_completed BOOLEAN NOT NULL DEFAULT FALSE,
+  inserted_at timestamp with time zone default timezone('utc'::text, now()) not null
+);

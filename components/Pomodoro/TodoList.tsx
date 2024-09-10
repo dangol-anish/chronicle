@@ -1,19 +1,14 @@
+"use client";
 import { Card, CardContent, CardTitle } from "../ui/card";
 import { Button } from "@/components/ui/button";
-import {
-  Dialog,
-  DialogContent,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { BadgePlus, Pencil, Trash2 } from "lucide-react";
-import { Textarea } from "@/components/ui/textarea";
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+
+import { Pencil, Trash2 } from "lucide-react";
+
 import { textShortener } from "@/utils/textShortener";
 import { Checkbox } from "../ui/checkbox";
+
+import { AddTask } from "./AddTask";
 
 export default function TodoList() {
   return (
@@ -23,30 +18,7 @@ export default function TodoList() {
           Tasks
         </CardTitle>
         <CardContent className="h-[500px] lg:h-[90%] overflow-y-auto scrollbar-hide flex flex-col gap-5">
-          <Dialog>
-            <DialogTrigger asChild>
-              <Button className="w-full flex gap-2 text-xl" variant="default">
-                <BadgePlus />
-                Add
-              </Button>
-            </DialogTrigger>
-            <DialogContent className="sm:max-w-[425px]">
-              <DialogHeader>
-                <DialogTitle>Add a new task to do</DialogTitle>
-              </DialogHeader>
-              <div className="grid gap-4 py-4">
-                <div className="flex flex-col gap-5">
-                  <Textarea
-                    className="w-full h-[200px] resize-none"
-                    placeholder="e.g. Brush my teeth"
-                  />
-                </div>
-              </div>
-              <DialogFooter>
-                <Button type="submit">Save</Button>
-              </DialogFooter>
-            </DialogContent>
-          </Dialog>
+          <AddTask />
 
           <div className="flex flex-col gap-5">
             <div className="border px-4 py-2 rounded-md text-md flex justify-between items-center">
