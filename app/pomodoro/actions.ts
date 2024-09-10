@@ -24,6 +24,6 @@ export async function addTasks(formData: FormData) {
     };
   }
 
-  revalidatePath("/habits", "layout");
-  redirect("/habits");
+  revalidatePath("/pomodoro", "layout");
+  redirect("/pomodoro");
 }
