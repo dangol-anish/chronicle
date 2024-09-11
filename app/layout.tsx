@@ -32,7 +32,7 @@ export default async function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <main className="flex h-screen overflow-hidden w-screen flex-col lg:flex-row ">
+          <main className="flex h-screen overflow-hidden w-full flex-col lg:flex-row ">
             {user !== null ? (
               <div>
                 <Sidebar />
