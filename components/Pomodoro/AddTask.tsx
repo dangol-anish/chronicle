@@ -43,11 +43,11 @@ export function AddTask() {
 
   return (
     <Dialog open={open} onOpenChange={(isOpen) => setOpen(isOpen)}>
-      <DialogTrigger className="">
-        <Button className="w-full flex gap-2 text-xl" variant="default">
+      <DialogTrigger className="w-full flex  text-xl border p-2 rounded-md bg-white text-slate-900">
+        <div className="flex w-full gap-3 justify-center items-center">
           <BadgePlus />
           Add
-        </Button>
+        </div>
       </DialogTrigger>
       <DialogContent className="w-[80%] lg:w-full rounded-md">
         <DialogHeader>

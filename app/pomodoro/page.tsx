@@ -1,11 +1,11 @@
 import { PomodoroClock } from "@/components/Pomodoro/PomodoroClock";
-import TodoList from "@/components/Pomodoro/TodoList";
+import { TaskList } from "@/components/Pomodoro/TaskList";
 
 export default function PomodoroPage() {
   return (
-    <div className=" scrollbar-hide lg:w-[80%] scrollbar-hide w-full flex flex-col items-center justify-start gap-5 h-full">
+    <div className=" lg:w-[70%]  w-full flex flex-col items-center justify-start gap-5 h-full mb-[100px]">
       <PomodoroClock />
-      <TodoList />
+      <TaskList />
     </div>
   );
 }

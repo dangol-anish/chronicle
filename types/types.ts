@@ -26,3 +26,14 @@ export interface Habit {
 export interface HabitsItemProps {
   habits: Habit[] | null;
 }
+
+export interface Task {
+  t_id: number;
+  t_task: string;
+  is_completed: boolean;
+  inserted_at: string;
+}
+
+export interface TasksItemProps {
+  tasks: Task[] | null;
+}

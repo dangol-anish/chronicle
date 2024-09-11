@@ -27,3 +27,25 @@ export async function addTasks(formData: FormData) {
   revalidatePath("/pomodoro", "layout");
   redirect("/pomodoro");
 }
+
+export async function getTasks() {
+  const supabase = await createClient();
+
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  const { data, error } = await supabase
+    .from("tasks")
+    .select("t_id, t_task, is_completed, inserted_at")
+    .eq("user_id", user?.id)
+    .order("inserted_at", { ascending: false });
+
+  if (error) {
+    return {
+      error: error.message,
+    };
+  }
+
+  return data;
+}
