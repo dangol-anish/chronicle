@@ -88,3 +88,56 @@ export async function deleteTask(taskId: number) {
     message: "Task deleted successfully",
   };
 }
+
+export async function updateTask(taskId: number, updatedContent: string) {
+  const supabase = createClient();
+
+  // Get the authenticated user
+  const {
+    data: { user },
+    error: userError,
+  } = await supabase.auth.getUser();
+
+  if (userError) {
+    return {
+      error: userError.message,
+    };
+  }
+
+  if (!user) {
+    return {
+      error: "User not authenticated",
+    };
+  }
+  const { data: task, error: fetchError } = await supabase
+    .from("tasks")
+    .select("user_id")
+    .eq("t_id", taskId)
+    .single();
+
+  if (fetchError || !task) {
+    throw new Error("Task not found");
+  }
+
+  if (task.user_id !== user.id) {
+    throw new Error("You do not have permission to edit this task");
+  }
+
+  // Update the task if the user is authorized
+  const { data: updatedTasks, error } = await supabase
+    .from("tasks")
+    .update({ t_task: updatedContent })
+    .eq("t_id", taskId)
+    .select(); // Ensure we get the updated data
+
+  if (error) {
+    throw new Error(error.message);
+  }
+
+  // Check if data is not null and return the updated task
+  if (updatedTasks && updatedTasks.length > 0) {
+    return updatedTasks[0];
+  } else {
+    throw new Error("Failed to update task or task not found");
+  }
+}
