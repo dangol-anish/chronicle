@@ -141,3 +141,31 @@ export async function updateTask(taskId: number, updatedContent: string) {
     throw new Error("Failed to update task or task not found");
   }
 }
+
+export async function toggleTaskCompletion(
+  taskId: number,
+  isCompleted: boolean
+) {
+  const supabase = createClient();
+
+  const {
+    data: { user },
+    error: userError,
+  } = await supabase.auth.getUser();
+
+  if (userError || !user) {
+    return { error: userError?.message || "User not authenticated" };
+  }
+
+  const { error } = await supabase
+    .from("tasks")
+    .update({ is_completed: isCompleted })
+    .eq("t_id", taskId)
+    .eq("user_id", user.id);
+
+  if (error) {
+    return { error: error.message };
+  }
+
+  return { message: "Task completion updated successfully" };
+}

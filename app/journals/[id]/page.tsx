@@ -42,15 +42,13 @@ export default function Page({ params }: { params: { id: number } }) {
   };
   return (
     <>
-      <main className="h-[90vh] w-full overflow-x-auto flex flex-col items-center gap-10">
-        <div className=" w-[80vw] flex justify-between items-center">
-          <div className="flex items-center gap-5">
+      <main className="h-[90vh] scrollbar-hide  overflow-y-auto  flex flex-col items-center gap-10">
+        <div className=" flex justify-between items-center w-full">
+          <div className="flex items-center gap-2">
             <div>{moodConverter(currentMood)}</div>
             <p>{formatDateTime(insertedAt)}</p>
           </div>
           <div className="flex gap-5">
-            <Button>Edit</Button>
-
             <Dialog>
               <DialogTrigger asChild>
                 <Button variant="default">Delete</Button>
@@ -65,6 +63,8 @@ export default function Page({ params }: { params: { id: number } }) {
 
                 <DialogFooter>
                   <Button
+                    className="w-full"
+                    variant="destructive"
                     onClick={() => {
                       handleJournalDelete(params.id);
                     }}
@@ -77,9 +77,9 @@ export default function Page({ params }: { params: { id: number } }) {
           </div>
         </div>
 
-        <div className="border p-5 rounded-md h-full w-[80vw] overflow-x-hidden ">
+        <div className=" rounded-md h-full scrollb">
           <div
-            className="max-w-full  "
+            className="scrollbar-hide px-2"
             dangerouslySetInnerHTML={{ __html: journalText }}
           ></div>
         </div>

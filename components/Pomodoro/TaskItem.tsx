@@ -1,6 +1,5 @@
 "use client";
 import { TasksItemProps } from "@/types/types";
-import { Select } from "../ui/select";
 import { Checkbox } from "../ui/checkbox";
 import { Button } from "../ui/button";
 import { Pen, Trash2 } from "lucide-react";
@@ -12,7 +11,11 @@ import {
   DialogTitle,
   DialogFooter,
 } from "../ui/dialog";
-import { deleteTask, updateTask } from "@/app/pomodoro/actions";
+import {
+  deleteTask,
+  updateTask,
+  toggleTaskCompletion,
+} from "@/app/pomodoro/actions"; // Add the new action
 import { useState } from "react";
 import { Textarea } from "../ui/textarea";
 
@@ -30,7 +33,6 @@ export function TaskItem({ tasks: initialTasks }: TasksItemProps) {
     try {
       setLoading(true);
       await deleteTask(taskId);
-      // Remove the deleted task from the list
       setTasks((prevTasks) =>
         prevTasks ? prevTasks.filter((task) => task.t_id !== taskId) : []
       );
@@ -77,21 +79,63 @@ export function TaskItem({ tasks: initialTasks }: TasksItemProps) {
     }
   };
 
+  const handleToggleCompletion = async (
+    taskId: number,
+    isCompleted: boolean
+  ) => {
+    // Optimistic UI update
+    setTasks((prevTasks) =>
+      prevTasks
+        ? prevTasks.map((task) =>
+            task.t_id === taskId
+              ? { ...task, is_completed: !isCompleted }
+              : task
+          )
+        : []
+    );
+
+    try {
+      await toggleTaskCompletion(taskId, !isCompleted); // Sync with server
+    } catch (error) {
+      console.error("Failed to update task status:", error);
+      // Revert the UI if the server call fails
+      setTasks((prevTasks) =>
+        prevTasks
+          ? prevTasks.map((task) =>
+              task.t_id === taskId
+                ? { ...task, is_completed: isCompleted }
+                : task
+            )
+          : []
+      );
+    }
+  };
+
   return (
     <>
       <ul className="w-full flex flex-col gap-3 justify-start list-none pt-5 px-0 max-h-[400px] overflow-y-auto scrollbar-hide">
         {tasks.map((task) => (
           <li
             key={task.t_id}
-            className="border flex justify-between px-5 py-3 rounded-md"
+            className={`border flex justify-between px-5 py-3 rounded-md ${
+              task.is_completed ? "bg-slate-200 dark:bg-slate-800" : ""
+            }`}
           >
             <div className="flex items-center gap-3">
               <Checkbox
+                checked={task.is_completed}
+                onCheckedChange={() =>
+                  handleToggleCompletion(task.t_id, task.is_completed)
+                }
                 className={`checked:bg-lime-500 ${
                   task.is_completed ? "bg-lime-500 checked:bg-lime-500" : ""
                 }`}
               />
-              <p className="h-[25px] w-[80%] scrollbar-hide overflow-y-auto">
+              <p
+                className={`h-[25px] w-[80%] scrollbar-hide overflow-y-auto ${
+                  task.is_completed ? "line-through text-gray-500" : ""
+                }`}
+              >
                 {task.t_task}
               </p>
             </div>
