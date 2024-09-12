@@ -96,3 +96,35 @@ export async function updateHabitLog(formData: FormData) {
 
   revalidatePath("/todos");
 }
+
+export async function getHabitDetails(habit_id: number) {
+  const supabase = await createClient();
+
+  const { data: habitsWithLogs, error } = await supabase
+    .from("habits")
+    .select(
+      `
+      h_name, 
+      h_question, 
+      h_note, 
+      inserted_at, 
+      habits_log (
+        log_id, 
+        log_date, 
+        log_time, 
+        is_completed, 
+        inserted_at
+      )
+    `
+    )
+    .order("inserted_at", { ascending: false })
+    .eq("h_id", habit_id);
+
+  if (error) {
+    return {
+      error: error.message,
+    };
+  }
+
+  return habitsWithLogs;
+}
