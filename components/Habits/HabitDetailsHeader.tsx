@@ -13,7 +13,19 @@ import {
 import { Input } from "../ui/input";
 import { Label } from "../ui/label";
 
-export function HabitDetailsHeader() {
+interface HabitDetailsHeaderProps {
+  name: string;
+  question: string;
+  note: string;
+  insertedAt: string;
+}
+
+export function HabitDetailsHeader({
+  name,
+  question,
+  note,
+  insertedAt,
+}: HabitDetailsHeaderProps) {
   // states
   const [loading, setLoading] = useState(false);
   // update functionality
@@ -23,7 +35,7 @@ export function HabitDetailsHeader() {
   return (
     <>
       <div className=" flex items-center justify-between">
-        <p className="text-2xl">Habit Name</p>
+        <p className="text-2xl">{name}</p>
         <div className="flex gap-5">
           <Dialog>
             <DialogTrigger className="dark:text-slate-900 bg-slate-100 px-3 py-2 border rounded-md ">
@@ -49,6 +61,7 @@ export function HabitDetailsHeader() {
                       name="habitName"
                       placeholder="e.g. Wake up on time"
                       className="col-span-3"
+                      value={name}
                       required
                     />
                   </div>
@@ -61,6 +74,7 @@ export function HabitDetailsHeader() {
                       name="habitQuestion"
                       placeholder="e.g. Did you wake on time today?"
                       className="col-span-3"
+                      value={question}
                       required
                     />
                   </div>
@@ -71,6 +85,7 @@ export function HabitDetailsHeader() {
                       id="habitNote"
                       name="habitNote"
                       placeholder="(Optional)"
+                      value={note}
                     />
                   </div>
                 </div>

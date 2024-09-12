@@ -5,11 +5,28 @@ import { HabitDetailsChart } from "@/components/Habits/HabitDetailsChart";
 export default async function Page({ params }: { params: { id: number } }) {
   const habitDetails = await getHabitDetails(params.id);
 
+  // Check if habitDetails contains an error
+  if (!Array.isArray(habitDetails)) {
+    return <div>Error loading habit details: {habitDetails.error}</div>;
+  }
+
+  // Ensure that habitDetails array has at least one item
+  if (habitDetails.length === 0) {
+    return <div>No habit details found.</div>;
+  }
+
+  const habit = habitDetails[0]; // Now it's safe to access the first element
+
   return (
     <>
       <div className="flex flex-col h-screen">
-        <HabitDetailsHeader />
-        <HabitDetailsChart />
+        <HabitDetailsHeader
+          name={habit.h_name}
+          question={habit.h_question}
+          note={habit.h_note}
+          insertedAt={habit.inserted_at}
+        />
+        {/* <HabitDetailsChart logs={habit.habits_log} /> */}
       </div>
     </>
   );
