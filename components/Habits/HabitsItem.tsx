@@ -73,7 +73,7 @@ export function HabitsItem({ habits }: HabitsItemProps) {
 
   return (
     <>
-      <Table>
+      <Table className="mt-5">
         <TableHeader>
           <TableRow>
             <TableHead className="w-[150px]">Name</TableHead>
@@ -115,7 +115,7 @@ export function HabitsItem({ habits }: HabitsItemProps) {
             ))}
         </TableBody>
       </Table>
-      <Pagination>
+      <Pagination className="mt-5">
         <PaginationContent className="flex gap-5">
           <PaginationItem>
             <PaginationPrevious
