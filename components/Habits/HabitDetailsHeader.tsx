@@ -69,7 +69,8 @@ export function HabitDetailsHeader({
   return (
     <>
       <div className=" flex items-center justify-between">
-        <p className="text-2xl">{textShortener(name, 25)}</p>
+        <p className="text-2xl hidden lg:block">{textShortener(name, 50)}</p>
+        <p className="text-2xl lg:hidden">{textShortener(name, 25)}</p>
         <div className="flex gap-5">
           <Dialog open={open} onOpenChange={(isOpen) => setOpen(isOpen)}>
             <DialogTrigger className="dark:text-slate-900 bg-slate-100 px-3 py-2 border rounded-md ">

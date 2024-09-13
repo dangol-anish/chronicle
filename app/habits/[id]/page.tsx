@@ -16,11 +16,11 @@ export default async function Page({ params }: { params: { id: number } }) {
     return <div>No habit details found.</div>;
   }
 
-  const habit = habitDetails[0]; // Now it's safe to access the first element
+  const habit = habitDetails[0];
 
   return (
     <>
-      <div className="flex flex-col h-screen">
+      <div className="flex flex-col h-[100vh] overflow-y-auto scrollbar-hide pb-[100px] lg:pb-[50px]">
         <HabitDetailsHeader
           habitId={params.id}
           name={habit.h_name}
@@ -29,7 +29,7 @@ export default async function Page({ params }: { params: { id: number } }) {
           insertedAt={habit.inserted_at}
         />
         <HabitDetailsInfo question={habit.h_question} note={habit.h_note} />
-        {/* <HabitDetailsChart logs={habit.habits_log} /> */}
+        <HabitDetailsChart />
       </div>
     </>
   );
