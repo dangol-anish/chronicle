@@ -1,36 +1,91 @@
 "use client";
 
-import { Bar, BarChart } from "recharts";
-
+import { Bar, BarChart, XAxis, YAxis, Tooltip, CartesianGrid } from "recharts";
 import { ChartConfig, ChartContainer } from "@/components/ui/chart";
+import { useMemo } from "react";
 
-const chartData = [
-  { month: "January", desktop: 186, mobile: 80 },
-  { month: "February", desktop: 305, mobile: 200 },
-  { month: "March", desktop: 237, mobile: 120 },
-  { month: "April", desktop: 73, mobile: 190 },
-  { month: "May", desktop: 209, mobile: 130 },
-  { month: "June", desktop: 214, mobile: 140 },
-];
+// Sample habit log interface
+interface HabitLog {
+  log_id: number;
+  log_date: string;
+  log_time: string;
+  inserted_at: string;
+  is_completed: boolean;
+}
 
+// Config for chart colors
 const chartConfig = {
-  desktop: {
-    label: "Desktop",
-    color: "#2563eb",
-  },
-  mobile: {
-    label: "Mobile",
-    color: "#60a5fa",
+  frequency: {
+    label: "Frequency",
+    color: "#34d399", // A green color
   },
 } satisfies ChartConfig;
 
-export function HabitDetailsChart() {
+// List of all months
+const allMonths = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+];
+
+// Function to aggregate log data by month
+function aggregateLogsByMonth(logs: HabitLog[]) {
+  // Initialize an object with all months set to 0 frequency
+  const monthMap: Record<string, number> = allMonths.reduce((acc, month) => {
+    acc[month] = 0;
+    return acc;
+  }, {} as Record<string, number>);
+
+  // Increment the frequency for each completed log
+  logs.forEach((log) => {
+    if (log.is_completed) {
+      const month = new Date(log.log_date).toLocaleString("default", {
+        month: "long",
+      });
+      monthMap[month]++;
+    }
+  });
+
+  // Convert the monthMap to an array of objects with month and frequency
+  return allMonths.map((month) => ({
+    month,
+    frequency: monthMap[month],
+  }));
+}
+
+// HabitDetailsChart component
+export function HabitDetailsChart({ logs }: { logs: HabitLog[] }) {
+  // Aggregate the logs by month to calculate frequency
+  const chartData = useMemo(() => aggregateLogsByMonth(logs), [logs]);
+
   return (
-    <ChartContainer config={chartConfig} className="min-h-[200px] w-full">
-      <BarChart accessibilityLayer data={chartData}>
-        <Bar dataKey="desktop" fill="var(--color-desktop)" radius={4} />
-        <Bar dataKey="mobile" fill="var(--color-mobile)" radius={4} />
-      </BarChart>
-    </ChartContainer>
+    <>
+      <p className="text-2xl mb-5 text-center">Frequency</p>
+      <ChartContainer
+        config={chartConfig}
+        className="min-h-[500px] max-h-[500px] w-full"
+      >
+        <BarChart width={600} height={300} data={chartData}>
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis dataKey="month" />
+          <YAxis />
+          <Tooltip />
+          <Bar
+            dataKey="frequency"
+            fill={chartConfig.frequency.color}
+            radius={4}
+          />
+        </BarChart>
+      </ChartContainer>
+    </>
   );
 }

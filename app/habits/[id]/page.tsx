@@ -2,6 +2,7 @@ import { HabitDetailsHeader } from "@/components/Habits/HabitDetailsHeader";
 import { getHabitDetails } from "../actions";
 import { HabitDetailsChart } from "@/components/Habits/HabitDetailsChart";
 import { HabitDetailsInfo } from "@/components/Habits/HabitDetailsInfo";
+import { Separator } from "@/components/ui/separator";
 
 export default async function Page({ params }: { params: { id: number } }) {
   const habitDetails = await getHabitDetails(params.id);
@@ -18,6 +19,8 @@ export default async function Page({ params }: { params: { id: number } }) {
 
   const habit = habitDetails[0];
 
+  // console.log(JSON.stringify(habit.habits_log));
+
   return (
     <>
       <div className="flex flex-col h-[100vh] overflow-y-auto scrollbar-hide pb-[100px] lg:pb-[50px]">
@@ -29,7 +32,8 @@ export default async function Page({ params }: { params: { id: number } }) {
           insertedAt={habit.inserted_at}
         />
         <HabitDetailsInfo question={habit.h_question} note={habit.h_note} />
-        <HabitDetailsChart />
+        <Separator className="my-5" />
+        <HabitDetailsChart logs={habit.habits_log} />
       </div>
     </>
   );
