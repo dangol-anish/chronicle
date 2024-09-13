@@ -128,3 +128,63 @@ export async function getHabitDetails(habit_id: number) {
 
   return habitsWithLogs;
 }
+
+export async function deleteHabit(habit_id: number) {
+  const supabase = createClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  if (!user) {
+    throw new Error("User is not logged in");
+  }
+
+  const { error } = await supabase.from("habits").delete().match({
+    user_id: user.id,
+    h_id: habit_id,
+  });
+
+  if (error) {
+    return {
+      error: error.message,
+    };
+  }
+  revalidatePath("/habits");
+  redirect("/habits");
+}
+
+export async function updateHabit(formData: FormData, habitId: number) {
+  const supabase = createClient();
+
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  if (!user) {
+    throw new Error("User is not logged in");
+  }
+
+  // Extract updated values from the formData
+  const habitName = formData.get("habitName") as string;
+  const habitQuestion = formData.get("habitQuestion") as string;
+  const habitNote = formData.get("habitNote") as string;
+
+  // Update the habit in the database
+  const { error } = await supabase
+    .from("habits")
+    .update({
+      h_name: habitName,
+      h_question: habitQuestion,
+      h_note: habitNote,
+    })
+    .eq("h_id", habitId)
+    .eq("user_id", user.id); // Ensure only the logged-in user can update their habit
+
+  if (error) {
+    return {
+      error: error.message,
+    };
+  }
+
+  revalidatePath("/habits");
+}

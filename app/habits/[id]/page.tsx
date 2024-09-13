@@ -21,6 +21,7 @@ export default async function Page({ params }: { params: { id: number } }) {
     <>
       <div className="flex flex-col h-screen">
         <HabitDetailsHeader
+          habitId={params.id}
           name={habit.h_name}
           question={habit.h_question}
           note={habit.h_note}
