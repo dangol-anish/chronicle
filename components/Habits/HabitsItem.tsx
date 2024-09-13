@@ -21,6 +21,7 @@ import {
 import { HabitCheckBox } from "./HabitCheckBox";
 import Link from "next/link";
 import { formatDate } from "@/utils/dateFormatter";
+import { textShortener } from "@/utils/textShortener";
 
 export function HabitsItem({ habits }: HabitsItemProps) {
   const effectiveHabits = habits || [];
@@ -85,7 +86,9 @@ export function HabitsItem({ habits }: HabitsItemProps) {
             .map((habit, habitIndex) => (
               <TableRow key={habitIndex}>
                 <TableCell className="font-medium">
-                  <Link href={`/habits/${habit.h_id}`}>{habit.h_name}</Link>
+                  <Link href={`/habits/${habit.h_id}`}>
+                    {textShortener(habit.h_name, 18)}
+                  </Link>
                 </TableCell>
                 {past7Days.map((date, dateIndex) => {
                   const log = habit.habits_log.find(

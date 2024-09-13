@@ -1,6 +1,7 @@
 import { HabitDetailsHeader } from "@/components/Habits/HabitDetailsHeader";
 import { getHabitDetails } from "../actions";
 import { HabitDetailsChart } from "@/components/Habits/HabitDetailsChart";
+import { HabitDetailsInfo } from "@/components/Habits/HabitDetailsInfo";
 
 export default async function Page({ params }: { params: { id: number } }) {
   const habitDetails = await getHabitDetails(params.id);
@@ -27,6 +28,7 @@ export default async function Page({ params }: { params: { id: number } }) {
           note={habit.h_note}
           insertedAt={habit.inserted_at}
         />
+        <HabitDetailsInfo question={habit.h_question} note={habit.h_note} />
         {/* <HabitDetailsChart logs={habit.habits_log} /> */}
       </div>
     </>
