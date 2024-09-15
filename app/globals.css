@@ -141,6 +141,7 @@ h3 {
 
 .heatmap-container {
   width: 85%;
+
   overflow-x: auto;
 }
 

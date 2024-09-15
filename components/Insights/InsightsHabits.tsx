@@ -9,22 +9,22 @@ interface HeatMapValue {
 }
 
 interface InsightsHabitsClientProps {
-  data: HeatMapValue[];
+  dataHabits: HeatMapValue[];
 }
 
 export default function InsightsHabitsClient({
-  data,
+  dataHabits,
 }: InsightsHabitsClientProps) {
   const [selected, setSelected] = useState<HeatMapValue | null>(null);
-
-  console.log(selected);
 
   const currentYear = new Date().getFullYear();
   const startOfYear = new Date(`${currentYear}-01-01`)
     .toISOString()
     .split("T")[0]; // YYYY-MM-DD format
 
-  const filteredData = data.filter((item) => item.date >= startOfYear);
+  const filteredDataHabits = dataHabits.filter(
+    (item) => item.date >= startOfYear
+  );
 
   return (
     <>
@@ -42,25 +42,27 @@ export default function InsightsHabitsClient({
             <HeatMap
               style={{ color: "white" }}
               width={2200}
-              height={1080}
+              height={300}
               rectSize={40}
               legendCellSize={0}
-              value={filteredData}
+              value={filteredDataHabits}
               startDate={new Date(`${currentYear}-01-01`)}
-              rectRender={(props, data) => {
+              rectRender={(props, dataHabits) => {
                 return (
                   <rect
                     {...props}
                     onClick={() => {
-                      setSelected(data.date === selected?.date ? null : data);
+                      setSelected(
+                        dataHabits.date === selected?.date ? null : dataHabits
+                      );
                     }}
                     onMouseEnter={() => {
-                      if (selected?.date !== data.date) {
-                        setSelected(data);
+                      if (selected?.date !== dataHabits.date) {
+                        setSelected(dataHabits);
                       }
                     }}
                     onMouseLeave={() => {
-                      if (selected?.date === data.date) {
+                      if (selected?.date === dataHabits.date) {
                         setSelected(null);
                       }
                     }}

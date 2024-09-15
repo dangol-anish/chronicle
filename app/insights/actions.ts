@@ -34,3 +34,36 @@ export async function getHabitsHeatmap() {
     count,
   }));
 }
+
+export async function getJournalsHeatmap() {
+  const supabase = await createClient();
+  const today = new Date();
+  const startOfYear = new Date(today.getFullYear(), 0, 1);
+
+  const { data, error } = await supabase
+    .from("journals")
+    .select("inserted_at")
+    .gte("inserted_at", startOfYear.toISOString())
+    .order("inserted_at", { ascending: true });
+
+  if (error) {
+    throw new Error(error.message);
+  }
+
+  const journalCompletionMap = new Map();
+
+  data.forEach((journal) => {
+    const date = new Date(journal.inserted_at).toISOString().split("T")[0];
+    if (journalCompletionMap.has(date)) {
+      journalCompletionMap.set(date, journalCompletionMap.get(date) + 1);
+    } else {
+      journalCompletionMap.set(date, 1);
+    }
+  });
+
+  // Convert map entries into an array of objects with date and count
+  return Array.from(journalCompletionMap.entries()).map(([date, count]) => ({
+    date,
+    count,
+  }));
+}
