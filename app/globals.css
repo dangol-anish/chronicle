@@ -138,3 +138,28 @@ h3 {
     --chart-5: 340 75% 55%;
   }
 }
+
+.heatmap-container {
+  width: 85%;
+  overflow-x: auto;
+}
+
+@media (max-width: 900px) {
+  .heatmap-container {
+    width: 100%;
+  }
+}
+
+.heatmap-wrapper {
+  min-width: 600px;
+}
+
+@media (max-width: 600px) {
+  .heatmap-wrapper {
+    min-width: 100%;
+  }
+
+  .heatmap-wrapper .heatmap {
+    width: 100%;
+  }
+}

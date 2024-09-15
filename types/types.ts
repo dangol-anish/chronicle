@@ -37,3 +37,9 @@ export interface Task {
 export interface TasksItemProps {
   tasks: Task[] | null;
 }
+
+// types.ts
+export interface HeatMapValue {
+  date: string; // or Date, depending on your requirements
+  count: number;
+}
