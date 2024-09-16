@@ -5,12 +5,13 @@ import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import { Separator } from "../ui/separator";
 import { signOut } from "@/app/auth/actions";
 import DeleteAccount from "./DeleteAccount";
+import UploadThing from "./UploadThing";
 
 export default function AccountSettings() {
   return (
     <>
       <div className="flex flex-col px-2 scrollbar-hide">
-        <div className="flex justify-between items-center mb-5">
+        {/* <div className="flex justify-between items-center mb-5">
           <div className="flex items-center gap-5">
             <Avatar className="md:h-20 md:w-20 w-16 h-16">
               <AvatarImage src="https://github.com/shadcn.png" />
@@ -23,10 +24,10 @@ export default function AccountSettings() {
           </div>
 
           <div className="flex gap-5">
-            <Button>Upload new picture</Button>
+            <UploadThing />
             <Button variant="outline">Delete</Button>
           </div>
-        </div>
+        </div> */}
         <div className="flex flex-col gap-2 mb-5 mt-3">
           <p className="text-xl font-bold">User Info</p>
           <div className="flex flex-col gap-2">
