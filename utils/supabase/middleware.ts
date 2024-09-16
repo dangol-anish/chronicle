@@ -35,6 +35,7 @@ export async function updateSession(request: NextRequest) {
     if (
       !url.pathname.startsWith("/login") &&
       !url.pathname.startsWith("/signup") &&
+      !url.pathname.startsWith("/help") &&
       url.pathname !== "/"
     ) {
       url.pathname = "/login";
