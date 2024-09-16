@@ -9,17 +9,17 @@ export default function SettingsPage() {
   return (
     <>
       <Tabs
-        defaultValue="General"
+        defaultValue="Account"
         className="w-full h-screen overflow-y-auto scrollbar-hide"
       >
         <TabsList className="mb-5 w-full">
-          <TabsTrigger className="flex gap-2 w-[50%]" value="General">
-            <Settings2 />
-            <p>General </p>
-          </TabsTrigger>
           <TabsTrigger className="flex gap-2 w-[50%]" value="Account">
             <UserRoundCog />
             <p>Account </p>
+          </TabsTrigger>
+          <TabsTrigger className="flex gap-2 w-[50%]" value="General">
+            <Settings2 />
+            <p>General </p>
           </TabsTrigger>
         </TabsList>
         <TabsContent value="General">

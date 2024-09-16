@@ -3,11 +3,13 @@ import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import { Separator } from "../ui/separator";
+import { signOut } from "@/app/auth/actions";
+import DeleteAccount from "./DeleteAccount";
 
 export default function AccountSettings() {
   return (
     <>
-      <div className="flex flex-col px-2  scrollbar-hide">
+      <div className="flex flex-col px-2 scrollbar-hide">
         <div className="flex justify-between items-center mb-5">
           <div className="flex items-center gap-5">
             <Avatar className="md:h-20 md:w-20 w-16 h-16">
@@ -30,7 +32,7 @@ export default function AccountSettings() {
           <div className="flex flex-col gap-2">
             {" "}
             <Label className="text-gray-300">Username</Label>
-            <Input className="w-[500px]" placeholder="JaneDoe1" />
+            <Input className="lg:w-[500px]" placeholder="JaneDoe" />
           </div>
         </div>
         <Separator />
@@ -38,32 +40,39 @@ export default function AccountSettings() {
           <p className="text-xl font-bold">Contact Email</p>
           <div className="flex flex-col gap-2">
             <Label className="text-gray-300">Email</Label>
-            <Input className="w-[500px]" placeholder="example@gmail.com" />
+            <Input className="lg:w-[500px]" placeholder="example@gmail.com" />
           </div>
         </div>
         <Separator />
         <div className="flex flex-col gap-2 mb-5 mt-3 w-full">
           <p className="text-xl font-bold">Password</p>
-          <div className="flex justify-between">
+          <div className="flex gap-10 ">
             <div className="flex flex-col gap-2">
               <Label className="text-gray-300">Current Password</Label>
-              <Input className="w-[500px]" type="password" />
+              <Input className="lg:w-[500px]" type="password" />
             </div>
             <div className="flex flex-col gap-2">
               <Label className="text-gray-300">New Password</Label>
-              <Input className="w-[500px]" type="password" />
+              <Input className="lg:w-[500px]" type="password" />
             </div>
           </div>
         </div>
 
-        <Button className="my-10">Save Changes</Button>
+        <Button className="my-10 lg:w-60 w-full">Save Changes</Button>
         <Separator />
         <div className="flex flex-col gap-2 mb-10 mt-3 w-full ">
           <p className="text-xl font-bold">Account security</p>
           <div className="flex justify-between">
             <div className="flex gap-5">
-              <Button>Log out</Button>
-              <Button variant="destructive">Delete my account</Button>
+              <DeleteAccount />
+              <form className="" action={signOut}>
+                <Button
+                  type="submit"
+                  className="w-full flex justify-start items-center cursor-default"
+                >
+                  Logout
+                </Button>
+              </form>
             </div>
           </div>
         </div>
