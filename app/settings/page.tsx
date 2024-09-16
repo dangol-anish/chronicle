@@ -8,7 +8,10 @@ import { Settings2, UserRoundCog } from "lucide-react";
 export default function SettingsPage() {
   return (
     <>
-      <Tabs defaultValue="General" className="w-full">
+      <Tabs
+        defaultValue="General"
+        className="w-full h-screen overflow-y-auto scrollbar-hide"
+      >
         <TabsList className="mb-5 w-full">
           <TabsTrigger className="flex gap-2 w-[50%]" value="General">
             <Settings2 />

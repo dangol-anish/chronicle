@@ -7,7 +7,7 @@ import { Separator } from "../ui/separator";
 export default function AccountSettings() {
   return (
     <>
-      <div className="flex flex-col h-screen overflow-y-auto px-2">
+      <div className="flex flex-col px-2  scrollbar-hide">
         <div className="flex justify-between items-center mb-5">
           <div className="flex items-center gap-5">
             <Avatar className="md:h-20 md:w-20 w-16 h-16">
@@ -55,7 +55,18 @@ export default function AccountSettings() {
             </div>
           </div>
         </div>
+
+        <Button className="my-10">Save Changes</Button>
         <Separator />
+        <div className="flex flex-col gap-2 mb-10 mt-3 w-full ">
+          <p className="text-xl font-bold">Account security</p>
+          <div className="flex justify-between">
+            <div className="flex gap-5">
+              <Button>Log out</Button>
+              <Button variant="destructive">Delete my account</Button>
+            </div>
+          </div>
+        </div>
       </div>
     </>
   );
