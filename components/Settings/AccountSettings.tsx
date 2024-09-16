@@ -1,3 +1,4 @@
+"use client";
 import { Label } from "../ui/label";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
@@ -5,9 +6,15 @@ import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import { Separator } from "../ui/separator";
 import { signOut } from "@/app/auth/actions";
 import DeleteAccount from "./DeleteAccount";
-import UploadThing from "./UploadThing";
+import { useState } from "react";
 
 export default function AccountSettings() {
+  const [userInfo, setUserInfo] = useState({
+    userName: null,
+    userEmail: null,
+    currentUserPassword: null,
+    newUserPassword: null,
+  });
   return (
     <>
       <div className="flex flex-col px-2 scrollbar-hide">
@@ -59,7 +66,7 @@ export default function AccountSettings() {
           </div>
         </div>
 
-        <Button className="my-10 lg:w-60 w-full">Save Changes</Button>
+        <Button className="my-5 lg:w-60 w-full">Save Changes</Button>
         <Separator />
         <div className="flex flex-col gap-2 mb-10 mt-3 w-full ">
           <p className="text-xl font-bold">Account security</p>
