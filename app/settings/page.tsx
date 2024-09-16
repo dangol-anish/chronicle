@@ -1,4 +1,5 @@
 import { ModeToggle } from "@/components/ModeToggle";
+import AccountSettings from "@/components/Settings/AccountSettings";
 import { Label } from "@/components/ui/label";
 import { Separator } from "@/components/ui/separator";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -25,7 +26,9 @@ export default function SettingsPage() {
           </div>
           <Separator className="my-4" />
         </TabsContent>
-        <TabsContent value="Account">Change your password here.</TabsContent>
+        <TabsContent value="Account">
+          <AccountSettings />
+        </TabsContent>
       </Tabs>
     </>
   );

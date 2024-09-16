@@ -4,7 +4,7 @@ import HeatMap from "@uiw/react-heat-map";
 import { useState } from "react";
 
 interface HeatMapValue {
-  date: string; // YYYY-MM-DD format
+  date: string;
   count: number;
 }
 
@@ -20,13 +20,12 @@ export default function InsightsJournal({
   const currentYear = new Date().getFullYear();
   const startOfYear = new Date(`${currentYear}-01-01`)
     .toISOString()
-    .split("T")[0]; // YYYY-MM-DD format
+    .split("T")[0];
 
   const filteredDataJournal = dataJournal.filter(
     (item) => item.date >= startOfYear
   );
 
-  // Find the highest journal count overall
   const highestCount = Math.max(
     ...filteredDataJournal.map((item) => item.count)
   );
