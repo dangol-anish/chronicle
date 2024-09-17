@@ -75,7 +75,6 @@ export async function updateHabitLog(formData: FormData) {
     throw new Error("User is not logged in");
   }
 
-  // Get the log_id and is_completed status from formData
   const log_id = formData.get("log_id");
   const is_completed = formData.get("is_completed") === "true";
 
@@ -178,7 +177,7 @@ export async function updateHabit(formData: FormData, habitId: number) {
       h_note: habitNote,
     })
     .eq("h_id", habitId)
-    .eq("user_id", user.id); // Ensure only the logged-in user can update their habit
+    .eq("user_id", user.id);
 
   if (error) {
     return {

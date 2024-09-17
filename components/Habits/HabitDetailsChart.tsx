@@ -4,7 +4,6 @@ import { Bar, BarChart, XAxis, YAxis, Tooltip, CartesianGrid } from "recharts";
 import { ChartConfig, ChartContainer } from "@/components/ui/chart";
 import { useMemo } from "react";
 
-// Sample habit log interface
 interface HabitLog {
   log_id: number;
   log_date: string;
@@ -13,15 +12,13 @@ interface HabitLog {
   is_completed: boolean;
 }
 
-// Config for chart colors
 const chartConfig = {
   frequency: {
     label: "Frequency",
-    color: "#34d399", // A green color
+    color: "#3d83f6",
   },
 } satisfies ChartConfig;
 
-// List of all months
 const allMonths = [
   "January",
   "February",
@@ -37,7 +34,6 @@ const allMonths = [
   "December",
 ];
 
-// Function to aggregate log data by month
 function aggregateLogsByMonth(logs: HabitLog[]) {
   // Initialize an object with all months set to 0 frequency
   const monthMap: Record<string, number> = allMonths.reduce((acc, month) => {
@@ -62,7 +58,6 @@ function aggregateLogsByMonth(logs: HabitLog[]) {
   }));
 }
 
-// HabitDetailsChart component
 export function HabitDetailsChart({ logs }: { logs: HabitLog[] }) {
   // Aggregate the logs by month to calculate frequency
   const chartData = useMemo(() => aggregateLogsByMonth(logs), [logs]);

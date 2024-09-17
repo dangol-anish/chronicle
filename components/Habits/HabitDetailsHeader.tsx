@@ -30,7 +30,6 @@ export function HabitDetailsHeader({
   note,
   insertedAt,
 }: HabitDetailsHeaderProps) {
-  // states
   const [loading, setLoading] = useState(false);
   const [updatedName, setUpdatedName] = useState(name);
   const [updatedQuestion, setUpdatedQuestion] = useState(question);
@@ -54,7 +53,6 @@ export function HabitDetailsHeader({
     }
   };
 
-  // delete functionality
   const handleDeleteHabit = async (habitId: number) => {
     try {
       setLoading(true);
@@ -86,7 +84,7 @@ export function HabitDetailsHeader({
               <form
                 onSubmit={async (e) => {
                   e.preventDefault();
-                  await handleUpdateHabit(habitId); // Call update function
+                  await handleUpdateHabit(habitId);
                 }}
               >
                 <div className="grid gap-4 py-4 ">

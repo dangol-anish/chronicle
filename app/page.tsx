@@ -10,7 +10,7 @@ import { Hourglass, NotebookPen, Repeat } from "lucide-react";
 export default function Home() {
   const items = [
     "Habit Tracker",
-    "Reflection Journals",
+    "Daily Journals",
     "Pomodoro Timer",
     "To-dos List",
     "Daily Insights",

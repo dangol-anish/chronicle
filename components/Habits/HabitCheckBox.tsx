@@ -2,14 +2,12 @@ import { useState } from "react";
 import { Checkbox } from "@/components/ui/checkbox";
 import { useFormStatus } from "react-dom";
 import { updateHabitLog } from "@/app/habits/actions";
-import Link from "next/link";
 
 export function HabitCheckBox({ log }: any) {
   const { pending } = useFormStatus();
   const [isCompleted, setIsCompleted] = useState(log.is_completed);
 
   const handleCheckboxChange = async (val: boolean) => {
-    // Optimistically update the state
     setIsCompleted(val);
 
     const formData = new FormData();
@@ -28,7 +26,7 @@ export function HabitCheckBox({ log }: any) {
     <form className="flex justify-center items-center py-1">
       <Checkbox
         disabled={pending}
-        className="md:p-[9px]"
+        className="md:p-[9px] border border-slate-400"
         checked={isCompleted}
         onCheckedChange={(val) => {
           if (val !== "indeterminate") {

@@ -7,19 +7,15 @@ import { Separator } from "@/components/ui/separator";
 export default async function Page({ params }: { params: { id: number } }) {
   const habitDetails = await getHabitDetails(params.id);
 
-  // Check if habitDetails contains an error
   if (!Array.isArray(habitDetails)) {
     return <div>Error loading habit details: {habitDetails.error}</div>;
   }
 
-  // Ensure that habitDetails array has at least one item
   if (habitDetails.length === 0) {
     return <div>No habit details found.</div>;
   }
 
   const habit = habitDetails[0];
-
-  // console.log(JSON.stringify(habit.habits_log));
 
   return (
     <>
