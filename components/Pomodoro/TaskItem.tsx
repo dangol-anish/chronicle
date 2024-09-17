@@ -118,7 +118,7 @@ export function TaskItem({ tasks: initialTasks }: TasksItemProps) {
           <li
             key={task.t_id}
             className={`border flex justify-between px-5 py-3 rounded-md ${
-              task.is_completed ? "bg-slate-200 dark:bg-slate-800" : ""
+              task.is_completed ? "bg-slate-200 dark:bg-slate-900" : ""
             }`}
           >
             <div className="flex items-center gap-3">

@@ -43,7 +43,10 @@ export function AddTask() {
 
   return (
     <Dialog open={open} onOpenChange={(isOpen) => setOpen(isOpen)}>
-      <DialogTrigger className="w-full flex  text-xl border p-2 rounded-md bg-white text-slate-900">
+      <DialogTrigger
+        className="w-full flex  text-xl  p-2 rounded-md dark:bg-slate-800 dark:text-white bg-white
+        text-slate-950 border dark:border-gray-100/10 hover:bg-slate-200"
+      >
         <div className="flex w-full gap-3 justify-center items-center">
           <BadgePlus />
           Add
@@ -58,6 +61,16 @@ export function AddTask() {
             onSubmit={async (e) => {
               e.preventDefault();
               const formData = new FormData(e.currentTarget);
+              const task = formData.get("task")?.toString().trim();
+
+              if (!task) {
+                toast({
+                  variant: "destructive",
+                  description: "Task cannot be empty.",
+                });
+                return;
+              }
+
               await clientAction(formData);
             }}
             className="flex flex-col gap-4"
@@ -69,7 +82,7 @@ export function AddTask() {
               name="task"
             />
             <DialogFooter>
-              <Button className="w-full" disabled={pending} type="submit">
+              <Button variant="outline" disabled={pending} type="submit">
                 {pending ? "Saving..." : "Save"}
               </Button>
             </DialogFooter>
