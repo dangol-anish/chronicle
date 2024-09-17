@@ -6,7 +6,9 @@ export function JournalsHeader() {
     <header className="flex justify-between items-center">
       <h2 className="text-[28px] lg:text-[32px] lg:flex">Journals</h2>
       <Link href="/journals/add">
-        <Button className="flex gap-2 items-center">Add</Button>
+        <Button variant="outline" className="flex gap-2 items-center text-md">
+          Add
+        </Button>
       </Link>
     </header>
   );

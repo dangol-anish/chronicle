@@ -30,7 +30,7 @@ const Toolbar = ({ editor, content, pending }: Props) => {
   }
 
   return (
-    <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 sm:gap-3">
+    <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-5 sm:gap-3">
       <div className="flex flex-wrap gap-2 sm:gap-3">
         <button
           onClick={(e) => {
@@ -188,11 +188,18 @@ const Toolbar = ({ editor, content, pending }: Props) => {
         </button>
       </div>
       {pending ? (
-        <Button disabled={pending} type="submit" className="w-full sm:w-auto">
+        <Button
+          disabled={pending}
+          type="submit"
+          className="w-full sm:w-auto dark:bg-slate-800 dark:text-white bg-white text-slate-950 border border-gray-200"
+        >
           Adding...
         </Button>
       ) : (
-        <Button type="submit" className="w-full sm:w-auto">
+        <Button
+          type="submit"
+          className="w-full sm:w-auto dark:bg-slate-800 dark:text-white bg-white text-slate-950 border dark:border-gray-100/10  hover:bg-slate-200"
+        >
           Add
         </Button>
       )}

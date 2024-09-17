@@ -2,8 +2,9 @@ import { formatCurrentDay } from "@/utils/dateFormatter";
 import { moodConverter } from "@/utils/moodConverter";
 import { plainTextConverter } from "@/utils/plainTextConverter";
 import { textShortener } from "@/utils/textShortener";
+
 import Link from "next/link";
-import React from "react";
+import { Separator } from "../ui/separator";
 
 export interface JournalItemDataProps {
   currentMood: string;
@@ -24,44 +25,57 @@ const JournalItem = ({
   const shortenedTextLG = textShortener(safeText, 120);
 
   return (
-    <Link
-      href={{
-        pathname: `/journals/${journalId}`,
-        query: {
-          cM: currentMood,
-          iA: insertedAt,
-          jT: journalText,
-        },
-      }}
-      className="md:p-5 flex flex-col md:bg-slate-200 md:dark:text-slate-900 rounded-lg md:w-[30%] md:h-[250px] md:hover:bg-slate-300 "
-    >
-      <div className="hidden md:flex items-center justify-between">
-        <div className="flex gap-2 items-center">
-          <p className="hidden md:flex">{moodConverter(currentMood)}</p>
-          <p className="font-bold text-lg hidden md:flex">
-            {currentMood[0].toUpperCase() + currentMood.substring(1)}
+    <div className="relative flex items-start w-full">
+      {/* Journal content */}
+      <Link
+        href={{
+          pathname: `/journals/${journalId}`,
+          query: {
+            cM: currentMood,
+            iA: insertedAt,
+            jT: journalText,
+          },
+        }}
+        className="flex-1 flex flex-col "
+      >
+        <div className="flex items-center w-full gap-12">
+          <p className="text-slate-600  text-sm">
+            {formatCurrentDay(insertedAt)}
           </p>
+          <div className="flex  gap-5 flex-col w-full">
+            <div className="flex gap-2 items-center">
+              <p>{moodConverter(currentMood)}</p>
+              <p className="text-sm text-slate-">
+                {currentMood[0].toUpperCase() + currentMood.substring(1)}
+              </p>
+            </div>
+
+            <div className="break-words overflow-hidden">{shortenedTextLG}</div>
+            <Separator />
+          </div>
         </div>
-        <p className="text-slate-600 md:text-end text-sm">
-          {formatCurrentDay(insertedAt)}
-        </p>
-      </div>
-      <div className="hidden md:flex h-full md:py-3 break-words overflow-hidden md:w-full ">
-        {shortenedTextLG}
-      </div>
-      <p className="text-slate-600 md:text-end text-sm md:hidden">
-        {formatCurrentDay(insertedAt)}
-      </p>
-      <div className="flex p-3 border items-center rounded-md md:border-none md:items-center gap-5 bg-slate-200 dark:text-slate-900 md:hidden ">
-        <p>{moodConverter(currentMood)}</p>
-        <div>
-          <p className="font-bold text-lg">
-            {currentMood[0].toUpperCase() + currentMood.substring(1)}
-          </p>
-          <p>{shortenedTextSM}</p>
-        </div>
-      </div>
-    </Link>
+      </Link>
+    </div>
+  );
+};
+
+const JournalTimeline = ({
+  journalItems,
+}: {
+  journalItems: JournalItemDataProps[];
+}) => {
+  return (
+    <div className="max-h-screen  px-6 py-8 ">
+      {journalItems.map((item) => (
+        <JournalItem
+          key={item.journalId}
+          currentMood={item.currentMood}
+          insertedAt={item.insertedAt}
+          journalText={item.journalText}
+          journalId={item.journalId}
+        />
+      ))}
+    </div>
   );
 };
 

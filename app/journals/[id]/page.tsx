@@ -51,7 +51,12 @@ export default function Page({ params }: { params: { id: number } }) {
           <div className="flex gap-5">
             <Dialog>
               <DialogTrigger asChild>
-                <Button variant="default">Delete</Button>
+                <Button
+                  variant="default"
+                  className="dark:text-slate-900 bg-white px-3 border rounded-md text-slate-950 hover:bg-slate-200"
+                >
+                  Delete
+                </Button>
               </DialogTrigger>
               <DialogContent className="sm:max-w-[425px]">
                 <DialogHeader>

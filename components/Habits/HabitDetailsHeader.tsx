@@ -71,7 +71,7 @@ export function HabitDetailsHeader({
         <p className="text-2xl lg:hidden">{textShortener(name, 25)}</p>
         <div className="flex gap-5">
           <Dialog open={open} onOpenChange={(isOpen) => setOpen(isOpen)}>
-            <DialogTrigger className="dark:text-slate-900 bg-slate-100 px-3 py-2 border rounded-md ">
+            <DialogTrigger className="dark:text-slate-900 hover:bg-slate-200 bg-white px-3 py-2 border rounded-md ">
               Edit
             </DialogTrigger>
             <DialogContent className="w-[80%] lg:w-full rounded-md">
@@ -138,7 +138,7 @@ export function HabitDetailsHeader({
           </Dialog>
 
           <Dialog>
-            <DialogTrigger className="dark:text-slate-900 bg-slate-100 px-3 border rounded-md ">
+            <DialogTrigger className="dark:text-slate-900 hover:bg-slate-200 bg-white px-3 border rounded-md ">
               Delete
             </DialogTrigger>
             <DialogContent className="w-[80%] lg:w-full rounded-md">

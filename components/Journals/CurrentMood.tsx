@@ -2,7 +2,7 @@
 
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { Angry, Frown, Laugh, Meh, Smile } from "lucide-react";
-import { SetStateAction, useState, Dispatch } from "react";
+import { SetStateAction, Dispatch } from "react";
 
 interface CurrentMoodProps {
   currentMood: string;
