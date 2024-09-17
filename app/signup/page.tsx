@@ -5,12 +5,13 @@ import { OAuthButtons } from "@/components/ui/oauth-signin";
 import { SignupForm } from "@/components/SignupForm";
 import Logo from "../../public/chronicles-light.svg";
 import Image from "next/image";
+import ManWork from "../../public/Task-bro.svg";
 
 export default function SignupPage() {
   return (
     <>
       <div className="flex h-[100vh]">
-        <section className="w-[50%]  hidden lg:flex p-10 bg-slate-900 ">
+        <section className="w-[50%]  hidden lg:flex p-10 bg-slate-900 flex-col">
           <Link href="/" className="text-white ">
             <div className="flex items-center gap-2">
               <Image
@@ -23,6 +24,9 @@ export default function SignupPage() {
               <p className="text-xl">Chronicle</p>
             </div>
           </Link>
+          <div className="flex justify-center items-center h-full">
+            <Image src={ManWork} alt="man-work" className="w-[80%]" />
+          </div>
         </section>
         <section className="w-full lg:w-[50%] p-10 h-full">
           <div className="flex justify-between lg:justify-end">

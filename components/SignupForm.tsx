@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { signup } from "@/app/signup/actions";
 import { useToast } from "@/components/ui/use-toast";
+
 import { z } from "zod";
 
 export function SignupForm() {
@@ -86,7 +87,7 @@ export function SignupForm() {
         </div>
         <div className="flex flex-col gap-5">
           <div className="flex flex-col gap-3">
-            <Label htmlFor="username">Username: </Label>
+            <Label htmlFor="username">Username </Label>
             <Input
               type="text"
               name="username"
@@ -94,7 +95,7 @@ export function SignupForm() {
               placeholder="example"
               required
             />
-            <Label htmlFor="email">Email: </Label>
+            <Label htmlFor="email">Email </Label>
             <Input
               id="email"
               name="email"
@@ -102,7 +103,7 @@ export function SignupForm() {
               placeholder="example@example.com"
               required
             />
-            <Label htmlFor="password">Password: </Label>
+            <Label htmlFor="password">Password </Label>
             <Input id="password" name="password" type="password" required />
           </div>
           <Button

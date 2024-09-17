@@ -35,7 +35,7 @@ export function LoginForm() {
       >
         <div className="flex flex-col gap-2">
           <h2 className="text-2xl font-semibold text-center">Welcome back</h2>
-          <p className="text-stone-500 text-center text-sm">
+          <p className="text-slate-400 text-center text-sm">
             Enter your credentials to access your account
           </p>
         </div>
@@ -56,7 +56,7 @@ export function LoginForm() {
           <Button
             type="submit"
             disabled={pending}
-            className="w-full bg-stone-900 hover:bg-stone-700 disabled:bg-stone-500"
+            className="w-full bg-slate-800 text-white hover:bg-slate-700 disabled:bg-slate-500"
           >
             {pending ? "Logging in..." : "Log in"}
           </Button>
