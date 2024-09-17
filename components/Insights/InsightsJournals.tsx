@@ -42,24 +42,27 @@ export default function InsightsJournal({
           <p>No. of journals created: {selected?.count ? selected.count : 0}</p>
         </div>
         <div className="heatmap-container">
-          <div className="heatmap-wrapper">
+          <div className="heatmap-wrapper ml-2">
             <HeatMap
-              style={{ color: "white" }}
-              width={2200}
-              height={300}
-              rectSize={40}
+              style={{ color: "gray" }}
+              width={2500}
+              height={210}
+              rectSize={25}
+              rectProps={{
+                rx: 5,
+              }}
               legendCellSize={0}
               value={filteredDataJournal}
               startDate={new Date(`${currentYear}-01-01`)}
               rectRender={(props, dataJournal) => {
                 // Calculate the intensity based on the percentage of the highest count
                 const percentage = (dataJournal.count / highestCount) * 100;
-                let fillColor = "#eaecf0";
+                let fillColor = "#CBD5E1";
 
                 if (percentage >= 80) fillColor = "#006400"; // Darker green
                 else if (percentage >= 50)
-                  fillColor = "#32CD32"; // Medium green
-                else if (percentage >= 30) fillColor = "#7CFC00"; // Light green
+                  fillColor = "#8EAE7D"; // Medium green
+                else if (percentage >= 30) fillColor = "#B7E0A1"; // Light green
 
                 return (
                   <rect

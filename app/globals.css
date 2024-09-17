@@ -164,3 +164,7 @@ h3 {
     width: 100%;
   }
 }
+
+.heatmap-container rect {
+  --rhm-rect-active: whitesmoke;
+}

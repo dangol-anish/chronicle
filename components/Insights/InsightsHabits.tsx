@@ -28,7 +28,7 @@ export default function InsightsHabitsClient({
 
   return (
     <>
-      <div className="flex justify-center flex-col">
+      <div className="flex justify-center flex-col ">
         <p className="text-xl ">Habits Insights</p>
         <div className="text-sm w-[400px] mb-4">
           <p>
@@ -37,15 +37,26 @@ export default function InsightsHabitsClient({
           </p>
           <p>No. of habits performed: {selected?.count ? selected.count : 0}</p>
         </div>
-        <div className="heatmap-container">
+        <div className="heatmap-container ml-2">
           <div className="heatmap-wrapper">
             <HeatMap
-              style={{ color: "white" }}
-              width={2200}
-              height={300}
-              rectSize={40}
+              style={{ color: "gray" }}
+              width={2500}
+              height={210}
+              rectSize={25}
+              rectProps={{
+                rx: 5,
+              }}
               legendCellSize={0}
               value={filteredDataHabits}
+              panelColors={{
+                0: "#CBD5E1",
+                2: "#B7E0A1",
+                4: "#A3C78F",
+                6: "#8EAE7D",
+                8: "#7A956B",
+                10: "#006400",
+              }}
               startDate={new Date(`${currentYear}-01-01`)}
               rectRender={(props, dataHabits) => {
                 return (
