@@ -49,7 +49,7 @@ export default function Home() {
               <Link href="/">Home</Link>
             </li>
             <li>
-              <Link href="/help">Guide</Link>
+              <Link href="/help">Help</Link>
             </li>
             <li>
               <Link href="/login">Login</Link>

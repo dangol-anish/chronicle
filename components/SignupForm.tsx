@@ -80,7 +80,7 @@ export function SignupForm() {
           <h2 className="text-2xl font-semibold text-center">
             Create an account
           </h2>
-          <p className="text-stone-500 text-center text-sm">
+          <p className="text-slate-400 text-center text-sm">
             Enter your details below to create your account
           </p>
         </div>
@@ -108,7 +108,7 @@ export function SignupForm() {
           <Button
             type="submit"
             disabled={pending}
-            className="w-full bg-stone-900 hover:bg-stone-700 disabled:bg-stone-500"
+            className="w-full bg-slate-800 text-white hover:bg-slate-700 disabled:bg-slate-500"
           >
             {pending ? "Signing up..." : "Sign up"}
           </Button>

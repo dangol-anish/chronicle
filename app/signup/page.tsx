@@ -3,15 +3,25 @@ import { Kanban } from "lucide-react";
 import Link from "next/link";
 import { OAuthButtons } from "@/components/ui/oauth-signin";
 import { SignupForm } from "@/components/SignupForm";
+import Logo from "../../public/chronicles-light.svg";
+import Image from "next/image";
 
 export default function SignupPage() {
   return (
     <>
       <div className="flex h-[100vh]">
-        <section className="w-[50%] bg-stone-900 hidden lg:flex p-10">
-          <Link href="/" className="text-white flex justify-center">
-            <Kanban size={30} />
-            <p className="text-xl">Chronicle</p>
+        <section className="w-[50%]  hidden lg:flex p-10 bg-slate-900 ">
+          <Link href="/" className="text-white ">
+            <div className="flex items-center gap-2">
+              <Image
+                src={Logo}
+                alt="logo"
+                className="invert"
+                width={40}
+                height={40}
+              />
+              <p className="text-xl">Chronicle</p>
+            </div>
           </Link>
         </section>
         <section className="w-full lg:w-[50%] p-10 h-full">
@@ -20,10 +30,18 @@ export default function SignupPage() {
               href="/"
               className="flex justify-center items-center lg:hidden"
             >
-              <Kanban size={25} />
-              <p>Chronicle</p>
+              <div className="flex items-center gap-2">
+                <Image
+                  src={Logo}
+                  alt="logo"
+                  className="dark:invert"
+                  width={40}
+                  height={40}
+                />
+                <p className="text-xl">Chronicle</p>
+              </div>
             </Link>
-            <Link href="/login" className="text-stone-900">
+            <Link href="/login" className="">
               Login
             </Link>
           </div>
@@ -31,7 +49,7 @@ export default function SignupPage() {
             <SignupForm />
             <div className="w-full md:w-[60%] lg:w-[50%] flex justify-between items-center">
               <Separator className="w-[30%]" />
-              <p className="text-stone-500 font-extralight text-xs">
+              <p className="text-slate-300 font-extralight text-xs">
                 OR CONTINUE WITH
               </p>
               <Separator className="w-[30%]" />
