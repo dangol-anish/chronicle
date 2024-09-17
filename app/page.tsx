@@ -9,11 +9,21 @@ import { Hourglass, NotebookPen, Repeat } from "lucide-react";
 
 export default function Home() {
   const items = [
-    "Habit Tracker",
-    "Daily Journals",
-    "Pomodoro Timer",
-    "To-dos List",
-    "Daily Insights",
+    <>
+      Habit <br /> Tracker
+    </>,
+    <>
+      Daily <br /> Journals
+    </>,
+    <>
+      Pomodoro <br /> Timer
+    </>,
+    <>
+      To-dos <br /> List
+    </>,
+    <>
+      Daily <br /> Insights
+    </>,
   ];
   const [activeIndex, setActiveIndex] = useState(0);
   const [fadeClass, setFadeClass] = useState("opacity-100");
@@ -32,7 +42,7 @@ export default function Home() {
 
   return (
     <>
-      <main className="w-full h-screen scrollbar-hide overflow-y-auto p-5 lg:py-6 lg:px-32 flex flex-col gap-14 ">
+      <main className="w-full h-screen scrollbar-hide overflow-y-auto p-5 lg:py-6 lg:px-32 flex flex-col gap-20 ">
         <header className="flex justify-between items-center">
           <div className="flex items-center gap-2">
             <Image
@@ -62,7 +72,7 @@ export default function Home() {
               <div className="flex flex-col gap-5">
                 <p className="text-7xl font-light">your all in one</p>
                 <span
-                  className={`font-bold text-7xl transition-opacity duration-500 ${fadeClass}`}
+                  className={`font-bold text-8xl transition-opacity duration-500 ${fadeClass}`}
                 >
                   {items[activeIndex]}
                 </span>
@@ -86,8 +96,8 @@ export default function Home() {
             className="h-[500px] w-[500px]  hidden lg:block"
           />
         </section>
-        <section className="flex justify-between">
-          <div className="w-[300px] flex flex-col gap-2">
+        <section className="flex w-full md:flex-row md:justify-between flex-col gap-5">
+          <div className="md:w-[30%] flex flex-col gap-2 bg-slate-900 p-5 rounded-lg">
             <p className="text-xl flex gap-2 items-center">
               <Repeat />
               Habit Tracking
@@ -97,7 +107,7 @@ export default function Home() {
               history and visual insights.
             </p>
           </div>
-          <div className="w-[300px] flex flex-col gap-2">
+          <div className="md:w-[30%] flex flex-col gap-2 bg-slate-900 p-5 rounded-lg">
             <p className="text-xl flex gap-2 items-center">
               <NotebookPen />
               Journals
@@ -107,7 +117,7 @@ export default function Home() {
               entries to see your journey over time.
             </p>
           </div>
-          <div className="w-[300px] flex flex-col gap-2">
+          <div className="md:w-[30%] flex flex-col gap-2 bg-slate-900 p-5 rounded-lg">
             <p className="text-xl flex gap-2 items-center">
               <Hourglass />
               Pomodoro Timer
