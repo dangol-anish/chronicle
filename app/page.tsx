@@ -221,7 +221,7 @@ export default function Home() {
         </section>
         <Separator />
         <section className="flex flex-col gap-8">
-          <p className="text-7xl text-center italic">
+          <p className="lg:text-7xl text-5xl text-center italic">
             "Transform Your Day: Track, Reflect, and Achieve with Ease."
           </p>
           <div className="flex gap-5 items-center justify-center">
