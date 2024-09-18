@@ -6,7 +6,6 @@ import {
   Repeat,
   Settings,
 } from "lucide-react";
-import { Home } from "lucide-react";
 
 const iconSize = 20;
 
