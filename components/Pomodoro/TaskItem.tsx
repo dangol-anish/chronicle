@@ -132,7 +132,7 @@ export function TaskItem({ tasks: initialTasks }: TasksItemProps) {
                 }`}
               />
               <p
-                className={`h-[25px] w-[80%] scrollbar-hide overflow-y-auto ${
+                className={`h-[25px] scrollbar-hide overflow-y-auto ${
                   task.is_completed ? "line-through text-gray-500" : ""
                 }`}
               >

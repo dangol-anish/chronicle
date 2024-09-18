@@ -37,11 +37,6 @@ export const menuList = [
         text: "Settings",
         icon: <Settings size={iconSize} />,
       },
-      {
-        link: "/help",
-        text: "Help",
-        icon: <HelpCircle size={iconSize} />,
-      },
     ],
   },
 ];

@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Hourglass, NotebookPen, Repeat } from "lucide-react";
 import HabitImage from "../public/habit-page.png";
 import JournalImage from "../public/journal-main.png";
+import PomodoroImage from "../public/pomodoro-page.png";
 import { Separator } from "@/components/ui/separator";
 
 export default function Home() {
@@ -61,9 +62,7 @@ export default function Home() {
             <li>
               <Link href="/">Home</Link>
             </li>
-            <li>
-              <Link href="/help">Help</Link>
-            </li>
+
             <li>
               <Link href="/login">Login</Link>
             </li>
@@ -101,7 +100,7 @@ export default function Home() {
         </section>
         <Separator />
         <section className="flex w-full md:flex-row md:justify-between flex-col gap-5 text-white ">
-          <div className="md:w-[30%] flex flex-col gap-2 dark:text-white dark:bg-slate-900 bg-slate-200 cursor-pointer hover:bg-slate-300 text-slate-950 p-5 rounded-lg dark:hover:bg-slate-800">
+          <div className="md:w-[30%] flex flex-col gap-2 dark:text-white dark:bg-slate-900 bg-slate-100 cursor-pointer hover:bg-slate-300 text-slate-950 p-5 rounded-lg dark:hover:bg-slate-800">
             <p className="text-xl flex gap-2 items-center">
               <Repeat />
               Habit Tracking
@@ -111,7 +110,7 @@ export default function Home() {
               history and visual insights.
             </p>
           </div>
-          <div className="md:w-[30%] flex flex-col gap-2 dark:text-white dark:bg-slate-900 bg-slate-200 cursor-pointer hover:bg-slate-300 text-slate-950 p-5 rounded-lg dark:hover:bg-slate-800">
+          <div className="md:w-[30%] flex flex-col gap-2 dark:text-white dark:bg-slate-900 bg-slate-100 cursor-pointer hover:bg-slate-300 text-slate-950 p-5 rounded-lg dark:hover:bg-slate-800">
             <p className="text-xl flex gap-2 items-center">
               <NotebookPen />
               Journals
@@ -121,7 +120,7 @@ export default function Home() {
               entries to see your journey over time.
             </p>
           </div>
-          <div className="md:w-[30%] flex flex-col gap-2 dark:text-white dark:bg-slate-900 bg-slate-200 cursor-pointer hover:bg-slate-300 text-slate-950 p-5 rounded-lg dark:hover:bg-slate-800">
+          <div className="md:w-[30%] flex flex-col gap-2 dark:text-white dark:bg-slate-900 bg-slate-100 cursor-pointer hover:bg-slate-300 text-slate-950 p-5 rounded-lg dark:hover:bg-slate-800">
             <p className="text-xl flex gap-2 items-center">
               <Hourglass />
               Pomodoro Timer
@@ -192,8 +191,52 @@ export default function Home() {
           </div>
         </section>
         <Separator />
-        <section></section>
+        <section className="flex items-center">
+          <div className="lg:w-[50%] h-full flex flex-col items-center lg:items-start justify-center gap-5">
+            <div className="w-[80%] flex flex-col gap-5">
+              <p className="text-4xl font-bold">
+                Boost Productivity with Pomodoro and Seamless Task Management
+              </p>
+              <p className="text-lg">
+                Stay focused with custom work-break cycles and an uncluttered
+                task management system designed for efficiency.
+              </p>
+            </div>
+
+            <ul className="text-xl pl-[15%] lg:pl-[5%] flex flex-col self-start ">
+              <li>Customizable time blocks for focused work and breaks</li>
+              <li>Unlimited task management</li>
+              <li>Minimalist design for ultimate focus</li>
+            </ul>
+          </div>
+          <div className="w-[50%] hidden lg:flex  items-center justify-end">
+            <Image
+              className="rounded-3xl"
+              src={PomodoroImage}
+              alt="pomodoro-image"
+              width={500}
+              height={500}
+            />
+          </div>
+        </section>
         <Separator />
+        <section className="flex flex-col gap-8">
+          <p className="text-7xl text-center italic">
+            "Transform Your Day: Track, Reflect, and Achieve with Ease."
+          </p>
+          <div className="flex gap-5 items-center justify-center">
+            {" "}
+            <Link href="/signup" className="">
+              <Button className="text-xl p-6">Get Started</Button>
+            </Link>
+          </div>
+        </section>
+        <Separator />
+        <footer>
+          <div className="text-center">
+            &copy; Chronicle - Anish Dangol - 2024
+          </div>
+        </footer>
       </main>
     </>
   );

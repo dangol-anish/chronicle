@@ -46,10 +46,6 @@ const UserItem: NextPage<Props> = async ({}) => {
             <DropdownMenuItem>Settings</DropdownMenuItem>
           </Link>
 
-          <Link href="/help">
-            <DropdownMenuItem>Help</DropdownMenuItem>
-          </Link>
-
           <DropdownMenuItem>
             <form className="w-full" action={signOut}>
               <button className="w-full flex justify-start items-center cursor-default">
