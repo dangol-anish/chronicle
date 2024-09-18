@@ -12,9 +12,8 @@ export async function oAuthSignIn(provider: Provider) {
 
   const supabase = createClient();
 
-  const redirectUrl = getURL(
-    "https://chronicle-kappa.vercel.app/auth/callback"
-  );
+  const redirectUrl = "https://chronicle-kappa.vercel.app/auth/callback";
+
   console.log("test" + redirectUrl);
 
   const { data, error } = await supabase.auth.signInWithOAuth({
