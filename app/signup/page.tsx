@@ -11,8 +11,8 @@ export default function SignupPage() {
   return (
     <>
       <div className="flex h-[100vh]">
-        <section className="w-[50%]  hidden lg:flex p-10 bg-slate-900 flex-col">
-          <Link href="/" className="text-white ">
+        <section className="w-[50%] hidden lg:flex p-10 bg-slate-900 flex-col">
+          <Link href="/" className="text-white flex">
             <div className="flex items-center gap-2">
               <Image
                 src={Logo}
@@ -29,7 +29,7 @@ export default function SignupPage() {
           </div>
         </section>
         <section className="w-full lg:w-[50%] p-10 h-full">
-          <div className="flex justify-between lg:justify-end">
+          <div className="flex justify-between items-center lg:justify-end">
             <Link
               href="/"
               className="flex justify-center items-center lg:hidden"

@@ -74,7 +74,7 @@ export default function Home() {
               <div className="flex flex-col gap-5">
                 <p className="text-7xl font-light">your all in one</p>
                 <span
-                  className={`font-bold text-8xl transition-opacity duration-500 ${fadeClass}`}
+                  className={`font-bold text-6xl transition-opacity duration-500 ${fadeClass}`}
                 >
                   {items[activeIndex]}
                 </span>

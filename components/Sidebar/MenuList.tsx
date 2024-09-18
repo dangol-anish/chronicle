@@ -1,4 +1,11 @@
-import { Book, ChartArea, Clock, HelpCircle, Settings } from "lucide-react";
+import {
+  Book,
+  ChartArea,
+  Hourglass,
+  NotebookPen,
+  Repeat,
+  Settings,
+} from "lucide-react";
 import { Home } from "lucide-react";
 
 const iconSize = 20;
@@ -10,17 +17,17 @@ export const menuList = [
       {
         link: "/habits",
         text: "Habits",
-        icon: <Home size={iconSize} />,
+        icon: <Repeat size={iconSize} />,
       },
       {
         link: "/journals",
         text: "Journals",
-        icon: <Book size={iconSize} />,
+        icon: <NotebookPen size={iconSize} />,
       },
       {
         link: "/pomodoro",
         text: "Pomodoro",
-        icon: <Clock size={iconSize} />,
+        icon: <Hourglass size={iconSize} />,
       },
       {
         link: "/insights",

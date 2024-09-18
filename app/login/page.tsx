@@ -29,7 +29,7 @@ export default async function LoginPage() {
           </div>
         </section>
         <section className="w-full lg:w-[50%] p-10 h-full">
-          <div className="flex justify-between lg:justify-end">
+          <div className="flex justify-between items-center lg:justify-end ">
             <Link
               href="/"
               className="flex justify-center items-center lg:hidden"
