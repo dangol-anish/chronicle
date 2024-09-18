@@ -6,6 +6,9 @@ import Logo from "../public/chronicles-light.svg";
 import WorkIllustration from "../public/Work time-cuate.svg";
 import { Button } from "@/components/ui/button";
 import { Hourglass, NotebookPen, Repeat } from "lucide-react";
+import HabitImage from "../public/habit-page.png";
+import JournalImage from "../public/journal-main.png";
+import { Separator } from "@/components/ui/separator";
 
 export default function Home() {
   const items = [
@@ -42,7 +45,7 @@ export default function Home() {
 
   return (
     <>
-      <main className="w-full h-screen scrollbar-hide overflow-y-auto p-5 lg:py-6 lg:px-32 flex flex-col gap-20 ">
+      <main className="w-full h-screen scrollbar-hide overflow-y-auto p-5 lg:py-6 lg:px-48 flex flex-col gap-20 ">
         <header className="flex justify-between items-center">
           <div className="flex items-center gap-2">
             <Image
@@ -96,8 +99,9 @@ export default function Home() {
             className="h-[500px] w-[500px]  hidden lg:block"
           />
         </section>
-        <section className="flex w-full md:flex-row md:justify-between flex-col gap-5">
-          <div className="md:w-[30%] flex flex-col gap-2 bg-slate-900 p-5 rounded-lg">
+        <Separator />
+        <section className="flex w-full md:flex-row md:justify-between flex-col gap-5 text-white ">
+          <div className="md:w-[30%] flex flex-col gap-2 dark:text-white dark:bg-slate-900 bg-slate-200 cursor-pointer hover:bg-slate-300 text-slate-950 p-5 rounded-lg dark:hover:bg-slate-800">
             <p className="text-xl flex gap-2 items-center">
               <Repeat />
               Habit Tracking
@@ -107,7 +111,7 @@ export default function Home() {
               history and visual insights.
             </p>
           </div>
-          <div className="md:w-[30%] flex flex-col gap-2 bg-slate-900 p-5 rounded-lg">
+          <div className="md:w-[30%] flex flex-col gap-2 dark:text-white dark:bg-slate-900 bg-slate-200 cursor-pointer hover:bg-slate-300 text-slate-950 p-5 rounded-lg dark:hover:bg-slate-800">
             <p className="text-xl flex gap-2 items-center">
               <NotebookPen />
               Journals
@@ -117,7 +121,7 @@ export default function Home() {
               entries to see your journey over time.
             </p>
           </div>
-          <div className="md:w-[30%] flex flex-col gap-2 bg-slate-900 p-5 rounded-lg">
+          <div className="md:w-[30%] flex flex-col gap-2 dark:text-white dark:bg-slate-900 bg-slate-200 cursor-pointer hover:bg-slate-300 text-slate-950 p-5 rounded-lg dark:hover:bg-slate-800">
             <p className="text-xl flex gap-2 items-center">
               <Hourglass />
               Pomodoro Timer
@@ -128,6 +132,68 @@ export default function Home() {
             </p>
           </div>
         </section>
+        <Separator />
+        <section className="flex items-center">
+          <div className="lg:w-[50%] h-full flex flex-col items-center lg:items-start justify-center gap-5">
+            <div className="w-[80%] flex flex-col gap-5">
+              <p className="text-4xl font-bold">
+                Master Your Habits with Weekly Progress and Deep Insights
+              </p>
+              <p className="text-lg">
+                Track, manage, and gain insights into your habits to build
+                consistency and achieve your personal goals.
+              </p>
+            </div>
+
+            <ul className="text-xl pl-[15%] lg:pl-[5%] flex flex-col self-start ">
+              <li>Visualize your weekly progress</li>
+              <li>Deep dive into habit insights</li>
+              <li>Track your habits with ease</li>
+              <li>Flexible habit management</li>
+            </ul>
+          </div>
+          <div className="w-[50%] hidden lg:flex  items-center justify-end">
+            <Image
+              className="rounded-3xl"
+              src={HabitImage}
+              alt="habit-image"
+              width={500}
+              height={500}
+            />
+          </div>
+        </section>
+        <Separator />
+        <section className="flex items-center">
+          <div className="w-[50%] hidden lg:flex  items-center justify-start">
+            <Image
+              className="rounded-3xl "
+              src={JournalImage}
+              alt="journal-image"
+              width={500}
+              height={500}
+            />
+          </div>
+          <div className="lg:w-[50%] h-full flex flex-col items-center lg:items-end justify-center gap-5">
+            <div className="w-[80%] flex flex-col gap-5">
+              <p className="text-4xl font-bold">
+                Capture Your Journey with Rich, Personalized Journals
+              </p>
+              <p className="text-lg">
+                Reflect on your thoughts and experiences using a powerful
+                journaling tool with mood tracking and detailed views.
+              </p>
+            </div>
+            <ul className="text-xl pl-[15%] lg:pl-[25%] flex flex-col self-start ">
+              <li>Weekly journal overview</li>
+              <li>Rich Text Editor for immersive journaling</li>
+              <li>Set the mood</li>
+              <li>Detailed journal views</li>
+            </ul>
+          </div>
+        </section>
+        <Separator />
+        <section></section>
+        <Separator />
       </main>
     </>
   );
