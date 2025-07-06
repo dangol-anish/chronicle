@@ -31,7 +31,7 @@ A modern, all-in-one productivity web application that combines habit tracking, 
 
 ```bash
 # 1. Clone the repository
-git clone https://github.com/yourusername/chronicle.git
+git clone https://github.com/dangol-anish/chronicle.git
 cd chronicle
 
 # 2. Install dependencies
@@ -179,7 +179,7 @@ chronicle/
 1. **Fork** the repository on GitHub.
 2. **Clone** your fork:
    ```bash
-   git clone https://github.com/yourusername/chronicle.git
+   git clone https://github.com/dangol-anish/chronicle.git
    ```
 3. **Create a new branch** for your feature or fix:
    ```bash
@@ -218,8 +218,8 @@ See [`LICENSE`](./LICENSE) for full text.
 ## 📬 Contact / Authors
 
 - **Anish Dangol**
-  - GitHub: [anishdangol](https://github.com/anishdangol)
-  - Email: (add your email here if desired)
+  - GitHub: [anishdangol](https://github.com/dangol-anish)
+  - Email: dangol.anish001@gmail.com
 
 ---
 
